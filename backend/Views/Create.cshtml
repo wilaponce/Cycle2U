@@ -1,0 +1,32 @@
+
+@model RecycLink.Models.PickupRequest
+
+@{
+    ViewData["Title"] = "Create Pickup Request";
+}
+
+<h2>Create Pickup Request</h2>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label>Material Type</label>
+        <input asp-for="MaterialType" />
+        <span asp-validation-for="MaterialType"></span>
+    </div>
+    <div>
+        <label>Quantity</label>
+        <input asp-for="Quantity" type="number" />
+        <span asp-validation-for="Quantity"></span>
+    </div>
+    <div>
+        <label>Address</label>
+        <input asp-for="Address" />
+        <span asp-validation-for="Address"></span>
+    </div>
+    <div>
+        <label>Preferred Pickup Time</label>
+        <input asp-for="PreferredPickupTime" type="datetime-local" />
+        <span asp-validation-for="PreferredPickupTime"></span>
+    </div>
+    <button type="submit">Submit Request</button>
+</form>
