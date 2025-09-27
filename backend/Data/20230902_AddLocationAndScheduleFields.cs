@@ -2,7 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace RecycLink.Migrations
+namespace Cycle2U.Migrations
 {
     public partial class AddLocationAndScheduleFields : Migration
     {

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace RecycLink.Controllers
+namespace Cycle2U.Controllers
 {
     public class HomeController : Controller
     {

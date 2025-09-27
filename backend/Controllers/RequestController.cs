@@ -1,9 +1,9 @@
 
 using Microsoft.AspNetCore.Mvc;
-using RecycLink.Models;
+using Cycle2U.Models;
 using System.Linq;
 
-namespace RecycLink.Controllers
+namespace Cycle2U.Controllers
 {
     public class RequestController : Controller
     {

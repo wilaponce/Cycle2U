@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System.Web;
-using RecycLink.Models;
+using Cycle2U.Models;
 
-namespace RecycLink.Controllers
+namespace Cycle2U.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

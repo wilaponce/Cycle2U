@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using RecycLink.Models;
+using Cycle2U.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

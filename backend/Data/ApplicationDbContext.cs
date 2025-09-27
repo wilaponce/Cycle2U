@@ -1,9 +1,9 @@
 
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using RecycLink.Models;
+using Cycle2U.Models;
 
-namespace RecycLink.Data
+namespace Cycle2U.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
