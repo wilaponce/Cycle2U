@@ -1,12 +1,19 @@
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 
+import { useAuth } from '../context/AuthContext';
+
 const Home: React.FC = () => {
+  const { user, logout } = useAuth();
   return (
     <div className={styles.container}>
       <nav className={styles.navbar}>
         <h1>Cycle2U</h1>
         <ul className={styles.navLinks}>
+          {user && user.role === 'customer' && <li><Link href='/dashboard'>Dashboard</Link></li>}
+          {user && user.role === 'driver' && <li><Link href='/driver-portal'>Driver Portal</Link></li>}
+          {user && user.role === 'admin' && <li><Link href='/admin-panel'>Admin Panel</Link></li>}
+          {user ? <li><button onClick={logout}>Logout</button></li> : <li><Link href='/login'>Login</Link></li>}
           <li><Link href="/">Home</Link></li>
           <li><Link href="/dashboard">Dashboard</Link></li>
           <li><Link href="/pickup-request">Pickup Request</Link></li>
