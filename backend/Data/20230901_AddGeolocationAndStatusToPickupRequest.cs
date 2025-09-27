@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace RecycLink.Migrations
+namespace Cycle2U.Migrations
 {
     public partial class AddGeolocationAndStatusToPickupRequest : Migration
     {

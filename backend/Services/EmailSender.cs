@@ -4,7 +4,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
 
-namespace RecycLink.Services
+namespace Cycle2U.Services
 {
     public class EmailSender : IEmailSender
     {

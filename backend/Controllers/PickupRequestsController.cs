@@ -2,11 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
-using RecycLink.Models;
+using Cycle2U.Models;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RecycLink.Controllers
+namespace Cycle2U.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
