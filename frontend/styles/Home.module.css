@@ -1,0 +1,33 @@
+
+.container {
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0070f3;
+  padding: 1rem;
+  color: white;
+}
+
+.navLinks {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.navLinks li a {
+  color: white;
+  text-decoration: none;
+}
+
+.main {
+  margin-top: 2rem;
+}
+
+.onboarding {
+  margin-top: 2rem;
+}
