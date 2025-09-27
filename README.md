@@ -1,9 +1,9 @@
-RecycLink Project - README
+Cycle2U Project - README
 ==========================
 
 Overview
 --------
-RecycLink is a full-stack recycling logistics platform designed to connect users with drivers for scheduled recyclable pickups. Inspired by gig-economy models like Uber and DoorDash, RecycLink provides real-time tracking, role-based dashboards, push notifications, and analytics to streamline the recycling process.
+Cycle2U is a full-stack recycling logistics platform designed to connect users with drivers for scheduled recyclable pickups. Inspired by gig-economy models like Uber and DoorDash, Cycle2U provide[...]
 
 Features
 --------
@@ -55,7 +55,7 @@ Deployment Notes
 - Set up CI/CD pipelines for automated deployment
 
 ==============================
-✅ RecycLink Project Checklist
+✅ Cycle2U Project Checklist
 ==============================
 
 Last Updated: 2025-09-26 19:04:16
