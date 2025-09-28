@@ -25,7 +25,6 @@ namespace Cycle2U.Services
             var password = smtp["Password"];
 
             int port = int.TryParse(portValue, out var parsedPort) ? parsedPort : 25;
-
             var client = new SmtpClient(host ?? "localhost", port)
             {
                 Credentials = new NetworkCredential(username ?? string.Empty, password ?? string.Empty),
