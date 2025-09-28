@@ -29,7 +29,7 @@ namespace Cycle2U.Controllers
             {
                 UserName = model.Email,
                 Email = model.Email,
-                Name = model.Name
+                
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);
