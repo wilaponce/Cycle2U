@@ -60,6 +60,16 @@ jobs:
         cd frontend
         npm install
         
+    - name: Show frontend funding info
+      run: |
+       cd frontend
+       npm fund
+
+    - name: Fix frontend vulnerabilities
+      run: |
+       cd frontend
+       npm audit fix --force   
+       
     - name: Install TypeScript dependencies
       run: |
        cd frontend
