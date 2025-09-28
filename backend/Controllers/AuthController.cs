@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using Cycle2U.Models;
+using Cycle2U.ViewModels;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Text;
