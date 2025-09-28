@@ -59,7 +59,12 @@ jobs:
       run: |
         cd frontend
         npm install
-
+        
+    - name: Install TypeScript dependencies
+      run: |
+       cd frontend
+       npm install --save-dev typescript @types/react @types/node
+    
     - name: Build Next.js frontend
       run: |
         cd frontend
