@@ -1,26 +1,34 @@
-import React from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
+import toast from 'react-hot-toast';
 
 export default function PasswordResetSuccess() {
+  const router = useRouter();
+  const { token } = router.query;
+
+  const handleConfirm = async () => {
+    try {
+      const res = await fetch('/api/Account/ValidatePasswordResetToken', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token })
+      });
+      if (res.ok) {
+        toast.success('Password reset confirmed');
+        router.push('/password-reset-success');
+      } else {
+        toast.error('Invalid or expired token');
+      }
+    } catch (err) {
+      toast.error('Error confirming password reset');
+    }
+  };
+
   return (
-    <>
-      <Head>
-        <title>Password Reset Successful</title>
-      </Head>
-      <div className="min-h-screen flex items-center justify-center bg-green-50 px-4">
-        <div className="bg-white p-8 rounded shadow-md text-center max-w-md w-full">
-          <h1 className="text-2xl font-bold text-green-700 mb-4">Password Reset Successful</h1>
-          <p className="text-gray-700 mb-6">
-            Your password has been successfully reset. You can now log in with your new credentials.
-          </p>
-          <Link href="/login">
-            <a className="text-white bg-green-600 hover:bg-green-700 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-green-500">
-              Go to Login
-            </a>
-          </Link>
-        </div>
-      </div>
-    </>
+    <div className="p-6 text-center">
+      <h1 className="text-xl font-bold mb-4">Confirm Password Reset</h1>
+      <button onClick={handleConfirm} className="bg-blue-600 text-white px-4 py-2 rounded">
+        Confirm Reset
+      </button>
+    </div>
   );
 }
