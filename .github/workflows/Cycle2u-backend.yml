@@ -25,7 +25,8 @@ jobs:
         dotnet-version: '8.0.x'
 
     - name: Restore .NET dependencies
-      run: dotnet restore ./src/Cycle2U.csproj
+      run: dotnet restore ./backend/Cycle2U.csproj
+      
     - name: Clean build cache
       run: |
         rm -rf ./src/bin
@@ -35,16 +36,16 @@ jobs:
       run: dotnet tool install --global dotnet-ef
 
     - name: Apply EF Core migration to database
-      run: dotnet ef database update --project ./src/Cycle2U.csproj
+      run: dotnet ef database update --project ./backend/Cycle2U.csproj
       
     - name: Install Swashbuckle.AspNetCore
-      run: dotnet add ./src/Cycle2U.csproj package Swashbuckle.AspNetCore
+      run: dotnet add ./backend/Cycle2U.csproj package Swashbuckle.AspNetCore
 
     - name: Build .NET backend
-       run: dotnet build ./src/Cycle2U.csproj --configuration Release
+      run: dotnet build ./backend/Cycle2U.csproj --configuration Release
 
-     - name: Publish .NET backend
-       run: dotnet publish ./src/Cycle2U.csproj --configuration Release --output ./publish
+    - name: Publish .NET backend
+      run: dotnet publish ./backend/Cycle2U.csproj --configuration Release --output ./publish
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
