@@ -28,7 +28,7 @@ jobs:
       run: dotnet restore ./src/Cycle2U.csproj
 
     - name: Install Swashbuckle.AspNetCore
-      run: dotnet add package Swashbuckle.AspNetCore
+      run: dotnet add ./src/Cycle2U.csproj package Swashbuckle.AspNetCore
 
     - name: Build .NET backend
        run: dotnet build ./src/Cycle2U.csproj --configuration Release
