@@ -1,16 +1,16 @@
 # Backend Dockerfile
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-# Swagger UI is supported via Swashbuckle.AspNetCore and Program.cs configuration
 WORKDIR /app
-EXPOSE 5000
+EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 COPY . .
-RUN dotnet restore
-RUN dotnet publish -c Release -o /app/publish
+RUN dotnet restore ./Cycle2U.csproj
+RUN dotnet publish ./Cycle2U.csproj -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=build /app/publish .
+ENV ASPNETCORE_ENVIRONMENT=Production
 ENTRYPOINT ["dotnet", "Cycle2U.dll"]
