@@ -144,7 +144,7 @@ namespace Cycle2U.Controllers
 
     public class VerifyEmailModel
     {
-        public string Email { get; set; }
-        public string Token { get; set; }
+        public required string Email { get; set; } = string.Empty;
+        public required string Token { get; set; } = string.Empty;
     }
 }
