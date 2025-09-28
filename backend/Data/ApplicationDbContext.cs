@@ -11,10 +11,6 @@ namespace Cycle2U.Data
         {
         }
 
-        public DbSet<PickupRequest> PickupRequests { get; set; }
-        public DbSet<Driver> Drivers { get; set; }
-        public DbSet<RefreshToken> RefreshTokens { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -25,5 +21,9 @@ namespace Cycle2U.Data
                 .HasForeignKey(p => p.AssignedDriverId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
+
+        public DbSet<PickupRequest> PickupRequests { get; set; }
+        public DbSet<Driver> Drivers { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
     }
 }
