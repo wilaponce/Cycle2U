@@ -34,6 +34,9 @@ jobs:
         
     - name: Install EF Core CLI tools
       run: dotnet tool install --global dotnet-ef
+
+    - name: Install Microsoft.EntityFrameworkCore.Sqlite
+      run: dotnet add ./backend/Cycle2U.csproj package Microsoft.EntityFrameworkCore.Sqlite
       
     - name: Build .NET backend
       run: dotnet build ./backend/Cycle2U.csproj --configuration Release
