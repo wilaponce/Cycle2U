@@ -5,7 +5,7 @@ using Cycle2U.Models;
 
 namespace Cycle2U.Data
 {
-    public class ApplicationDbContext : DbContext, IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
