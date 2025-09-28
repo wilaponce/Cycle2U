@@ -18,21 +18,29 @@ namespace Cycle2U.Services
         public Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
             var smtp = _config.GetSection("Smtp");
-            var client = new SmtpClient(smtp["Host"], int.Parse(smtp["Port"] ?? "0"))
+            var portValue = smtp["Port"];
+            var fromAddress = smtp["From"];
+            var host = smtp["Host"];
+            var username = smtp["Username"];
+            var password = smtp["Password"];
+
+            int port = int.TryParse(portValue, out var parsedPort) ? parsedPort : 25;
+
+            var client = new SmtpClient(host ?? "localhost", port)
             {
-                Credentials = new NetworkCredential(smtp["Username"], smtp["Password"]),
+                Credentials = new NetworkCredential(username ?? string.Empty, password ?? string.Empty),
                 EnableSsl = true
             };
 
             var mailMessage = new MailMessage
             {
-                From = new MailAddress(smtp["From"] ?? throw new ArgumentNullException(nameof(smtp["From"])) ),
+                From = new MailAddress(fromAddress ?? throw new ArgumentNullException(nameof(fromAddress))),
                 Subject = subject,
                 Body = htmlMessage,
                 IsBodyHtml = true
             };
-            
-            mailMessage.To.Add(email);
+
+            mailMessage.To.Add(email ?? throw new ArgumentNullException(nameof(email)));
 
             return client.SendMailAsync(mailMessage);
         }
