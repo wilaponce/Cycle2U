@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     const allowedRoles = protectedRoutes[router.pathname];
-    if (allowedRoles && (!user || !allowedRoles.includes(user.role))) {
+    if (allowedRoles && (!user.role || !allowedRoles.includes(user.role))) {
       router.push(user ? '/' : '/login');
     }
   }, [router.pathname, user]);
