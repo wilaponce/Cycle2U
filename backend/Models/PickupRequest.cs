@@ -21,6 +21,12 @@ namespace Cycle2U.Models
 
         [Required]
         [StringLength(200)]
-        public string Location { get; set; }
+        public string Location 
+        
+        [Required]
+        public int AssignedDriverId { get; set; }
+        
+        public required Driver AssignedDriver { get; set; }
+
     }
 }
