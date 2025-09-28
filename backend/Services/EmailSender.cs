@@ -26,7 +26,7 @@ namespace Cycle2U.Services
 
             var mailMessage = new MailMessage
             {
-                From = new MailAddress(smtp["From"] ?? throw new ArgumentNullException(nameof(address)) ),
+                From = new MailAddress(smtp["From"] ?? throw new ArgumentNullException(nameof(smtp["From"])) ),
                 Subject = subject,
                 Body = htmlMessage,
                 IsBodyHtml = true
