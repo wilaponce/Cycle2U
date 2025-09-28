@@ -1,0 +1,48 @@
+name: Cycle2U Build and Deploy
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      docker:
+        image: docker:20.10.7
+        options: --privileged
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Restore .NET dependencies
+      run: dotnet restore ./src/Cycle2U.sln
+
+    - name: Build .NET backend
+      run: dotnet build ./src/Cycle2U.sln --configuration Release
+        - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+
+    - name: Install frontend dependencies
+      run: |
+        cd frontend
+        npm install
+
+    - name: Build Next.js frontend
+      run: |
+        cd frontend
+        npm run build
+
+    - name: Run backend with Docker Compose
+      run: docker-compose -f docker-compose.yml up --build -d
