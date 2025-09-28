@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
 
-export default function EmailVerificationConfirm() {
+export default function EmailVerificationSuccess() {
   const router = useRouter();
   const { token } = router.query;
 
