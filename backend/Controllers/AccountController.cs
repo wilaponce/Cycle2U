@@ -15,8 +15,8 @@ namespace Cycle2U.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-       private readonly IEmailSender _emailSender;
-        public AccountController(UserManager<ApplicationUser> userManager,IEmailSender emailSender,
+       private readonly IEmailSender<ApplicationUser> _emailSender;
+        public AccountController(UserManager<ApplicationUser> userManager,IEmailSender<ApplicationUser> emailSender,
                                  SignInManager<ApplicationUser> signInManager,
                                  RoleManager<IdentityRole> roleManager)
         {
@@ -94,8 +94,7 @@ namespace Cycle2U.Controllers
             return BadRequest(result.Errors);
         }
 
-         // Example action using the email sender
-        [HttpPost("send-confirmation")]
+          [HttpPost("send-confirmation")]
         public async Task<IActionResult> SendConfirmationEmail([FromBody] ApplicationUser user)
         {
             await _emailSender.SendEmailAsync(user, "Confirm your account", "Please confirm your account by clicking here.");
