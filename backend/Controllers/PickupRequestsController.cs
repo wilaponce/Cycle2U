@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Cycle2U.Models;
 using System.Linq;
 using System.Threading.Tasks;
+using Cycle2U.Data;
 
 namespace Cycle2U.Controllers
 {
