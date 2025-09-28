@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Cycle2UAuthAPI.Data;
-using Cycle2u.Data;
+using Cycle2U.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
