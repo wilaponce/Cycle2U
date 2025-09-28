@@ -12,7 +12,7 @@ const protectedRoutes: { [key: string]: string[] } = {
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const { user } = useAuth();
+  const user = useAuth();
 
   useEffect(() => {
     const allowedRoles = protectedRoutes[router.pathname];
