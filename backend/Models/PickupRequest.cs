@@ -9,19 +9,12 @@ namespace Cycle2U.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        public string UserId { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string Status { get; set; }
+       public required string UserId { get; set; } = string.Empty;
+        public required string Status { get; set; } = "Pending";
+        public required string Location { get; set; } = string.Empty;
 
         [Required]
         public DateTime ScheduledTime { get; set; }
-
-        [Required]
-        [StringLength(200)]
-        public string Location {get; set;}
         
         [Required]
         public int AssignedDriverId { get; set; } = 0;
