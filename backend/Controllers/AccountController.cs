@@ -1,4 +1,4 @@
-
+using System.Net;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Cycle2U.Models;
@@ -15,8 +15,8 @@ namespace Cycle2U.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly IEmailSender<ApplicationUser> _emailSender;
-        public AccountController(UserManager<ApplicationUser> userManager,IEmailSender<ApplicationUser> emailSender,
+       private readonly IEmailSender _emailSender
+        public AccountController(UserManager<ApplicationUser> userManager,IEmailSender emailSender,
                                  SignInManager<ApplicationUser> signInManager,
                                  RoleManager<IdentityRole> roleManager)
         {
@@ -76,7 +76,7 @@ namespace Cycle2U.Controllers
             if (user == null) return NotFound("User not found");
 
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-            var callbackUrl = $"https://yourfrontend.com/reset-password?email={HttpUtility.UrlEncode(email)}&token={HttpUtility.UrlEncode(token)}";
+            var callbackUrl = $"https://yourfrontend.com/reset-password?email={WebUtility.UrlEncode(email)}&token={WebUtility.UrlEncode(token)}";
 
             await _emailSender.SendEmailAsync(email, "Reset Password", $"Reset your password using this link: {callbackUrl}");
             return Ok("Password reset email sent");
