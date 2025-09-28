@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using Cycle2U.Models;
+using Cycle2U.Data;
 
 namespace Cycle2U.Controllers
 {
