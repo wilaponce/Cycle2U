@@ -2,7 +2,7 @@ import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { useEffect, useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 
 const protectedRoutes: { [key: string]: string[] } = {
   '/dashboard': ['customer'],
@@ -12,7 +12,7 @@ const protectedRoutes: { [key: string]: string[] } = {
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const user = useAuth();
+  const { user } = useAuth();
 
   useEffect(() => {
     const allowedRoles = protectedRoutes[router.pathname];
