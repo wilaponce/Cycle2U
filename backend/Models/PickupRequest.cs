@@ -12,7 +12,8 @@ namespace Cycle2U.Models
        public required string UserId { get; set; } = string.Empty;
         public required string Status { get; set; } = "Pending";
         public required string Location { get; set; } = string.Empty;
-
+        [Required]
+        public int DriverId { get; set; } = 0;
         [Required]
         public DateTime ScheduledTime { get; set; }
         

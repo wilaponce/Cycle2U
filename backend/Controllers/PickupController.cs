@@ -7,6 +7,12 @@ namespace Cycle2U.Controllers
     [Route("api/[controller]")]
     public class PickupController : ControllerBase
     {
+        private readonly ApplicationDbContext _context;
+        public PickupController(ApplicationDbContext context)
+        {
+    _context = context;
+}
+
         [HttpPost]
         public IActionResult RequestPickup([FromBody] PickupRequest request)
         {
