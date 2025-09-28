@@ -1,8 +1,8 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
-import { useEffect, useContext } from 'react';
-import { useAuth } from '../context/AuthContext';
+import { useEffect } from 'react';
+import { AuthProvider, useAuth } from '../context/AuthContext';
 
 const protectedRoutes: { [key: string]: string[] } = {
   '/dashboard': ['customer'],
@@ -21,7 +21,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, [router.pathname, user]);
 
-  return <Component {...pageProps} />;
+  return (
+    <AuthProvider>
+      <Component {...pageProps} />
+    </AuthProvider>
+  );
 }
 
 export default MyApp;
