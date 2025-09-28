@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Cycle2U.Models
 {
-    public class User
+    public class ApplicationUser: IdentityUser
     {
         public int Id { get; set; }
         public string Email { get; set; }
