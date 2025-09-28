@@ -1,5 +1,6 @@
 # Backend Dockerfile
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+# Swagger UI is supported via Swashbuckle.AspNetCore and Program.cs configuration
 WORKDIR /app
 EXPOSE 5000
 
