@@ -6,13 +6,13 @@ namespace Cycle2U.ViewModels
     {
         [Required]
         [EmailAddress]
-        public string Email { get; set; }
+        public required string Email { get; set; }
 
         [Required]
-        public string Token { get; set; }
+        public required string Token { get; set; }
 
         [Required]
-        [DataType(DataType.Password)]
-        public string NewPassword { get; set; }
+        [StringLength(100, MinimumLength = 6)]
+        public required string NewPassword { get; set; }
     }
 }
