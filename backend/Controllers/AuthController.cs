@@ -98,7 +98,7 @@ namespace Cycle2U.Controllers
             return Ok(new { Message = "Logged out and refresh token revoked." });
         }
 
-        private string GenerateJwtToken(User user)
+        private string GenerateJwtToken(ApplicationUser user)
         {
             var claims = new[]
             {
