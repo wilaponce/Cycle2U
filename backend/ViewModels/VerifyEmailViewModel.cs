@@ -6,9 +6,9 @@ namespace Cycle2U.ViewModels
     {
         [Required]
         [EmailAddress]
-        public string Email { get; set; }
+        public required string Email { get; set; }
 
         [Required]
-        public string Token { get; set; }
+        public required string Token { get; set; }
     }
 }
