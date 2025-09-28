@@ -19,7 +19,7 @@ namespace Cycle2U.Controllers
 
         // PUT: api/DriverLocation/{driverId}
         [HttpPut("{driverId}")]
-        public async Task<IActionResult> UpdateDriverLocation(string driverId, [FromBody] LocationUpdateModel location)
+        public async Task<IActionResult> UpdateDriverLocation(int driverId, [FromBody] LocationUpdateModel location)
         {
             var driver = await _context.Drivers.FirstOrDefaultAsync(d => d.DriverId == driverId);
             if (driver == null)
