@@ -26,7 +26,8 @@ namespace Cycle2U.Models
         [Required]
         public int AssignedDriverId { get; set; }
         
-        public required Driver AssignedDriver { get; set; }
+        [Fixed]
+        public Driver? AssignedDriver { get; set; }
 
     }
 }
