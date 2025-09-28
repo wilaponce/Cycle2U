@@ -34,10 +34,10 @@ jobs:
 
       - name: Build and run containers with Docker Compose
         run: |
-          docker-compose -f ./src/docker-compose.yml up --build -d
+          docker-compose -f docker-compose.yml up --build -d
 
       - name: Show running containers
         run: docker ps
 
       - name: Stop containers
-        run: docker-compose -f ./src/docker-compose.yml down
+        run: docker-compose -f docker-compose.yml down
