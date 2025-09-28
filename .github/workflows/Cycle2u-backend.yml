@@ -26,7 +26,12 @@ jobs:
 
     - name: Restore .NET dependencies
       run: dotnet restore ./src/Cycle2U.csproj
+    - name: Install EF Core CLI tools
+      run: dotnet tool install --global dotnet-ef
 
+    - name: Apply EF Core migration to database
+      run: dotnet ef database update --project ./src/Cycle2U.csproj
+      
     - name: Install Swashbuckle.AspNetCore
       run: dotnet add ./src/Cycle2U.csproj package Swashbuckle.AspNetCore
 
