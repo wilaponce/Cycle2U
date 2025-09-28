@@ -1,0 +1,23 @@
+name: Build Docker Image and Audit Workflows
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build-docker:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Build Docker image for Cycle2U backend
+      run: docker build -f Dockerfile.backend -t cycle2u-backend .
+
+  audit-workflows:
+    runs-on: ubuntu-latest
+    steps:
+    - name: List workflow files
+      run: |
+        echo "Listing all workflow files in .github/workflows:"
+        find .github/workflows -type f -name "*.yml" -o -name "*.yaml" || echo "No workflow files found."
