@@ -137,9 +137,9 @@ namespace Cycle2U.Controllers
     }
     public class ResetPasswordModel
     {
-        public string Email { get; set; }
-        public string Token { get; set; }
-        public string NewPassword { get; set; }
+        public required string Email { get; set; } = string.Empty;
+        public required string Token { get; set; } = string.Empty;
+        public required string NewPassword { get; set; } = string.Empty;
     }
 
     public class VerifyEmailModel
