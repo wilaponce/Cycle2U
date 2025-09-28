@@ -10,7 +10,8 @@ namespace Cycle2U.Models
         [Required]
         [StringLength(100)]
         public required string Name { get; set; } = string.Empty;
-
+        
+        public int DriverId { get; set; } = 0;
         public bool IsAvailable { get; set; }
 
         [Range(-90, 90)]

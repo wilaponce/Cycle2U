@@ -97,7 +97,7 @@ namespace Cycle2U.Controllers
           [HttpPost("send-confirmation")]
         public async Task<IActionResult> SendConfirmationEmail([FromBody] ApplicationUser user)
         {
-            await _emailSender.SendEmailAsync(user, "Confirm your account", "Please confirm your account by clicking here.");
+            await _emailSender.SendEmailAsync(user.Email, "Confirm your account", "Please confirm your account by clicking here.");
             return Ok("Confirmation email sent.");
         }
 
