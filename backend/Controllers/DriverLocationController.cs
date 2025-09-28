@@ -34,11 +34,33 @@ namespace Cycle2U.Controllers
 
             return NoContent();
         }
-    }
+        // PUT: api/DriverLocation/{driverId}
+        [HttpPut("{driverId}")]
+        public async Task<IActionResult> UpdateDriverLocation(string driverId, [FromBody] LocationUpdateModel location)
+        {
+            var driver = await _context.Drivers.FirstOrDefaultAsync(d => d.DriverId == driverId);
+            if (driver == null)
+            {
+                return NotFound();
+            }
 
+            driver.Latitude = location.Latitude;
+            driver.Longitude = location.Longitude;
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+    }
+    
+    public class LocationUpdateModel
+    {
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+    }
     public class DriverLocationUpdateModel
     {
         public double Latitude { get; set; }
         public double Longitude { get; set; }
     }
+    
 }
