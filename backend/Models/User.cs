@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Cycle2UAuthAPI.Models
+namespace Cycle2U.Models
 {
     public class User
     {

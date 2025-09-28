@@ -11,3 +11,4 @@ namespace Cycle2UAuthAPI.Data
         public DbSet<RefreshToken> RefreshTokens { get; set; }
     }
 }
+    

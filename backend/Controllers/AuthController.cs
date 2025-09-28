@@ -6,23 +6,23 @@ using System.Security.Claims;
 using System.Text;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
-using Cycle2UAuthAPI.Data;
-using Cycle2UAuthAPI.Models;
+using Cycle2U.Data;
+using Cycle2U.Models;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System;
 using System.Linq;
 
-namespace Cycle2UAuthAPI.Controllers
+namespace Cycle2U.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly ApplicationDbContext _context;
         private readonly IConfiguration _configuration;
 
-        public AuthController(AppDbContext context, IConfiguration configuration)
+        public AuthController(ApplicationDbContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;

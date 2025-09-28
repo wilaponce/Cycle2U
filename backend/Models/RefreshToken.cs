@@ -1,6 +1,6 @@
 using System;
 
-namespace Cycle2UAuthAPI.Models
+namespace Cycle2U.Models
 {
     public class RefreshToken
     {

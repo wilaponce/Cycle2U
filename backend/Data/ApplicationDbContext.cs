@@ -5,7 +5,7 @@ using Cycle2U.Models;
 
 namespace Cycle2U.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : DbContext, IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -14,5 +14,6 @@ namespace Cycle2U.Data
 
         public DbSet<PickupRequest> PickupRequests { get; set; }
         public DbSet<Driver> Drivers { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
     }
 }
