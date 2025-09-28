@@ -15,7 +15,7 @@ namespace Cycle2U.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IEmailSender<ApplicationUser> _emailSender;
-        public AccountController(UserManager<ApplicationUser> userManager,IEmailSender emailSender,
+        public AccountController(UserManager<ApplicationUser> userManager,IEmailSender<ApplicationUser> emailSender,
                                  SignInManager<ApplicationUser> signInManager,
                                  RoleManager<IdentityRole> roleManager)
         {
