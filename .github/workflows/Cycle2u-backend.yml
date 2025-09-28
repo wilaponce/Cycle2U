@@ -1,5 +1,3 @@
-name: Cycle2U Build and Deploy
-
 on:
   push:
     branches: [master]
@@ -29,16 +27,17 @@ jobs:
 
     - name: Build .NET backend
       run: dotnet build ./src/Cycle2U.sln --configuration Release
+
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
         node-version: '18.x'
-
+        
     - name: Install frontend dependencies
       run: |
         cd frontend
         npm install
-
+        
     - name: Build Next.js frontend
       run: |
         cd frontend
