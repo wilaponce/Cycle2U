@@ -25,19 +25,22 @@ jobs:
     - name: Restore .NET dependencies
       run: dotnet restore ./src/Cycle2U.sln
 
+    - name: Install Swashbuckle.AspNetCore
+      run: dotnet add package Swashbuckle.AspNetCore
+
     - name: Build .NET backend
       run: dotnet build ./src/Cycle2U.sln --configuration Release
-
-    - name: Set up Node.js
+      
+      - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
         node-version: '18.x'
-        
+
     - name: Install frontend dependencies
       run: |
         cd frontend
         npm install
-        
+
     - name: Build Next.js frontend
       run: |
         cd frontend
