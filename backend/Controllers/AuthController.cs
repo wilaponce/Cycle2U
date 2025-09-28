@@ -1,139 +1,63 @@
+
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Configuration;
-using System.Security.Claims;
-using System.Text;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.IdentityModel.Tokens;
-using Cycle2U.Data;
+using Microsoft.AspNetCore.Identity;
 using Cycle2U.Models;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
-using System;
-using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Cycle2U.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
+    [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
-        private readonly IConfiguration _configuration;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public AuthController(ApplicationDbContext context, IConfiguration configuration)
+        public AuthController(UserManager<ApplicationUser> userManager)
         {
-            _context = context;
-            _configuration = configuration;
+            _userManager = userManager;
+        }
+
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterViewModel model)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var user = new ApplicationUser
+            {
+                UserName = model.Email,
+                Email = model.Email,
+                Name = model.Name
+            };
+
+            var result = await _userManager.CreateAsync(user, model.Password);
+            return result.Succeeded ? Ok() : BadRequest(result.Errors);
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginRequest request)
+        public async Task<IActionResult> Login([FromBody] LoginViewModel model)
         {
-            var user = await _context.Users.Include(u => u.RefreshTokens).FirstOrDefaultAsync(u => u.Email == request.Email);
-            if (user == null || !BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
-            {
-                return Unauthorized("Invalid email or password.");
-            }
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            var refreshToken = GenerateRefreshToken();
-            user.RefreshTokens.Add(refreshToken);
-            await _context.SaveChangesAsync();
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user == null) return Unauthorized();
 
-            Response.Cookies.Append("refreshToken", refreshToken.Token, new CookieOptions
-            {
-                HttpOnly = true,
-                Expires = refreshToken.Expires
-            });
-
-            var token = GenerateJwtToken(user);
-            return Ok(new { Token = token, User = new { user.Id, user.Email, user.Name } });
+            var isValid = await _userManager.CheckPasswordAsync(user, model.Password);
+            return isValid ? Ok("Login successful") : Unauthorized();
         }
 
-        [HttpPost("refresh")]
-        public async Task<IActionResult> Refresh()
+        public class ResetPasswordModel
         {
-            var refreshToken = Request.Cookies["refreshToken"];
-            var user = await _context.Users.Include(u => u.RefreshTokens)
-                .FirstOrDefaultAsync(u => u.RefreshTokens.Any(rt => rt.Token == refreshToken));
-
-            if (user == null)
-                return Unauthorized("Invalid refresh token.");
-
-            var token = user.RefreshTokens.First(rt => rt.Token == refreshToken);
-
-            if (token.IsRevoked || token.Expires < DateTime.UtcNow)
-                return Unauthorized("Expired or revoked refresh token.");
-
-            token.IsRevoked = true;
-            var newRefreshToken = GenerateRefreshToken();
-            user.RefreshTokens.Add(newRefreshToken);
-            await _context.SaveChangesAsync();
-
-            var newJwt = GenerateJwtToken(user);
-            Response.Cookies.Append("refreshToken", newRefreshToken.Token, new CookieOptions
-            {
-                HttpOnly = true,
-                Expires = newRefreshToken.Expires
-            });
-
-            return Ok(new { Token = newJwt });
+            public required string Email { get; set; } = string.Empty;
+            public required string Token { get; set; } = string.Empty;
+            public required string NewPassword { get; set; } = string.Empty;
         }
 
-        [HttpPost("logout")]
-        [Authorize]
-        public async Task<IActionResult> Logout()
+        public class VerifyEmailModel
         {
-            var refreshToken = Request.Cookies["refreshToken"];
-            var token = await _context.RefreshTokens.FirstOrDefaultAsync(rt => rt.Token == refreshToken);
-
-            if (token != null)
-            {
-                token.IsRevoked = true;
-                await _context.SaveChangesAsync();
-            }
-
-            Response.Cookies.Delete("refreshToken");
-            return Ok(new { Message = "Logged out and refresh token revoked." });
+            public required string Email { get; set; } = string.Empty;
+            public required string Token { get; set; } = string.Empty;
         }
-
-        private string GenerateJwtToken(ApplicationUser user)
-        {
-            var claims = new[]
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Name, user.Name)
-            };
-
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            var token = new JwtSecurityToken(
-                issuer: _configuration["Jwt:Issuer"],
-                audience: _configuration["Jwt:Audience"],
-                claims: claims,
-                expires: DateTime.Now.AddHours(2),
-                signingCredentials: creds);
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
-        }
-
-        private RefreshToken GenerateRefreshToken()
-        {
-            return new RefreshToken
-            {
-                Token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64)),
-                Expires = DateTime.UtcNow.AddDays(7),
-                IsRevoked = false
-            };
-        }
-    }
-
-    public class LoginRequest
-    {
-        public string Email { get; set; }
-        public string Password { get; set; }
     }
 }
