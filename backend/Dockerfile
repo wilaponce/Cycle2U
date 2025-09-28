@@ -7,8 +7,8 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 COPY . .
-RUN dotnet restore backend/src/Cycle2U.csproj
-RUN dotnet publish backend/src/Cycle2U.csproj -c Release -o /app/publish
+RUN dotnet restore /Cycle2U.csproj
+RUN dotnet publish /Cycle2U.csproj -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
