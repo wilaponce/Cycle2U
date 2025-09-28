@@ -31,10 +31,10 @@ jobs:
       run: dotnet add package Swashbuckle.AspNetCore
 
     - name: Build .NET backend
-      run: dotnet build ./src/Cycle2U.csproj --configuration Release
-      
-      - name: Publish .NET backend
-      run: dotnet publish ./src/Cycle2U.csproj --configuration Release --output ./publish
+       run: dotnet build ./src/Cycle2U.csproj --configuration Release
+
+     - name: Publish .NET backend
+       run: dotnet publish ./src/Cycle2U.csproj --configuration Release --output ./publish
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
