@@ -93,17 +93,12 @@ namespace Cycle2U.Controllers
             return BadRequest(result.Errors);
         }
 
-        [HttpPost("SendEmailVerification")]
-        public async Task<IActionResult> SendEmailVerification([FromBody] string email)
+         // Example action using the email sender
+        [HttpPost("send-confirmation")]
+        public async Task<IActionResult> SendConfirmationEmail([FromBody] ApplicationUser user)
         {
-            var user = await _userManager.FindByEmailAsync(email);
-            if (user == null) return NotFound("User not found");
-
-            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-            var callbackUrl = $"https://yourfrontend.com/verify-email?email={HttpUtility.UrlEncode(email)}&token={HttpUtility.UrlEncode(token)}";
-
-            await _emailSender.SendEmailAsync(email, "Verify Email", $"Verify your email using this link: {callbackUrl}");
-            return Ok("Verification email sent");
+            await _emailSender.SendEmailAsync(user, "Confirm your account", "Please confirm your account by clicking here.");
+            return Ok("Confirmation email sent.");
         }
 
         [HttpPost("VerifyEmail")]
