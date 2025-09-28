@@ -11,7 +11,7 @@ namespace Cycle2U.Models
         public int Id { get; set; }
 
         [Required]
-        public string Token { get; set; }
+        public required string Token { get; set; }
 
         public DateTime Expires { get; set; }
 
@@ -24,8 +24,8 @@ namespace Cycle2U.Models
         public bool IsActive => Revoked == null && !IsExpired;
 
         [ForeignKey("UserId")]
-        public ApplicationUser User { get; set; }
+        public required ApplicationUser User { get; set; }
 
-        public string UserId { get; set; }
+        public required string UserId { get; set; }
     }
 }
