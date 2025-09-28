@@ -1,4 +1,3 @@
-
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Cycle2U.Models;
@@ -15,15 +14,16 @@ namespace Cycle2U.Data
         public DbSet<PickupRequest> PickupRequests { get; set; }
         public DbSet<Driver> Drivers { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-        base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<PickupRequest>()
-            .HasOne(p => p.AssignedDriver)
-            .WithMany()
-            .HasForeignKey(p => p.AssignedDriverId)
-            .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<PickupRequest>()
+                .HasOne(p => p.AssignedDriver)
+                .WithMany()
+                .HasForeignKey(p => p.AssignedDriverId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
