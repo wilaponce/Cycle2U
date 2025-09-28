@@ -6,7 +6,6 @@ using System.Text;
 using Cycle2U.Data;
 using Cycle2U.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 
@@ -25,13 +24,20 @@ builder.Services.AddAuthorization();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Cycle2U API", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Cycle2U API",
+        Version = "v1"
+    });
 });
 
 var app = builder.Build();
 
 app.UseSwagger();
-app.UseSwaggerUI();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Cycle2U API V1");
+});
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
