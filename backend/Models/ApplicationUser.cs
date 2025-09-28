@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 
 namespace Cycle2U.Models
@@ -6,7 +6,9 @@ namespace Cycle2U.Models
     public class ApplicationUser: IdentityUser
     {
         
-        public string Name { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string FullName { get; set; } = string.Empty;
         public List<RefreshToken> RefreshTokens { get; set; } = new();
     }
 }
