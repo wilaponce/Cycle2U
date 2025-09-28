@@ -19,24 +19,6 @@ namespace Cycle2U.Controllers
 
         // PUT: api/DriverLocation/{driverId}
         [HttpPut("{driverId}")]
-        public async Task<IActionResult> UpdateLocation(string driverId, [FromBody] DriverLocationUpdateModel model)
-        {
-            var driver = await _context.Drivers.FirstOrDefaultAsync(d => d.Id == driverId);
-            if (driver == null)
-            {
-                return NotFound();
-            }
-
-            driver.Latitude = model.Latitude;
-            driver.Longitude = model.Longitude;
-
-            _context.Drivers.Update(driver);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-        // PUT: api/DriverLocation/{driverId}
-        [HttpPut("{driverId}")]
         public async Task<IActionResult> UpdateDriverLocation(string driverId, [FromBody] LocationUpdateModel location)
         {
             var driver = await _context.Drivers.FirstOrDefaultAsync(d => d.DriverId == driverId);
