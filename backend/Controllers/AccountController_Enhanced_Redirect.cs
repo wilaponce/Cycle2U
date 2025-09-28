@@ -67,21 +67,24 @@ namespace Cycle2U.Controllers
 
             return Unauthorized("Invalid login attempt.");
         }
+        
+        
+        // Redirect logic after password reset and email verification
+        [HttpPost("ConfirmPasswordReset")]
+        public IActionResult ConfirmPasswordReset(string token)
+        {
+            // Validate token and redirect
+            return Redirect("/password-reset-success");
+        }
+        
+        [HttpPost("ConfirmEmailVerification")]
+        public IActionResult ConfirmEmailVerification(string token)
+        {
+            // Validate token and redirect
+            return Redirect("/email-verification-success");
+        }
+
+        
     }
 }
 
-
-// Redirect logic after password reset and email verification
-[HttpPost("ConfirmPasswordReset")]
-public IActionResult ConfirmPasswordReset(string token)
-{
-    // Validate token and redirect
-    return Redirect("/password-reset-success");
-}
-
-[HttpPost("ConfirmEmailVerification")]
-public IActionResult ConfirmEmailVerification(string token)
-{
-    // Validate token and redirect
-    return Redirect("/email-verification-success");
-}
