@@ -65,20 +65,51 @@ jobs:
         cd frontend
         npm fund
         
-    - name: install motion 
-      run: |
-        cd frontend 
-        npm install motion
-        
     - name: install framer-motion 
       run: |
         cd frontend 
-        npm install framer-motion
-        
+        npm install motion
+  
+    - name: Disable Next.js telemetry
+      run: |
+        cd frontend
+        npx next telemetry disable
+
+    - name: Configure Next.js build caching
+      uses: actions/cache@v3
+      with:
+        path: frontend/.next/cache
+        key: ${{ runner.os }}-nextjs-${{ hashFiles('frontend/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-nextjs-
+          
+    - name: Install TypeScript dependencies
+      run: |
+       cd frontend
+       npm install --save-dev typescript @types/react @types/node
+    
     - name: Fix frontend vulnerabilities
       run: |
         cd frontend
         npm audit fix --force
+        
+    - name: Build Next.js frontend
+      run: |
+        cd frontend
+        npm run build
+        
+    - name: Install Docker Compose
+      run: |
+       sudo curl -L "https://github.com/docker/compose/releases/download/v2.24.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+       sudo chmod +x /usr/local/bin/docker-compose
+       docker-compose version
+
+    - name: Run backend with Docker Compose
+      run: docker-compose -f docker-compose.yml up --build -d        
+    - name: install framer-motion 
+      run: |
+        cd frontend 
+        npm install framer-motion
 
     - name: Disable Next.js telemetry
       run: |
@@ -97,7 +128,12 @@ jobs:
       run: |
        cd frontend
        npm install --save-dev typescript @types/react @types/node
-
+       
+    - name: Fix frontend vulnerabilities
+      run: |
+        cd frontend
+        npm audit fix --force
+        
     - name: Build Next.js frontend
       run: |
         cd frontend
