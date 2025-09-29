@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { motion } from 'motion/react';
+import AnimatedPageWrapper from 'framer-motion';
 
 interface AnimatedPageWrapperProps {
   children: React.ReactNode;
