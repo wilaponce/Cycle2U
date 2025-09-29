@@ -65,11 +65,16 @@ jobs:
         cd frontend
         npm fund
         
-    - name: install framer-motion 
+    - name: install motion 
       run: |
         cd frontend 
         npm install motion
-       
+        
+    - name: install framer-motion 
+      run: |
+        cd frontend 
+        npm install framer-motion
+        
     - name: Fix frontend vulnerabilities
       run: |
         cd frontend
