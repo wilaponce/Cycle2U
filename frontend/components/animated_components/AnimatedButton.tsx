@@ -1,13 +1,12 @@
-import { motion } from 'framer-motion';
+import { motion, HTMLMotionProps } from 'framer-motion';
 import React from 'react';
-import { MotionProps } from 'framer-motion';
 
-interface AnimatedButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, MotionProps {
+interface AnimatedButtonProps extends HTMLMotionProps < 'button' > {
   children: React.ReactNode;
-  className?: string;
+  className ? : string;
 }
 
-const AnimatedButton: React.FC<AnimatedButtonProps> = ({ children, className, ...props }) => {
+const AnimatedButton: React.FC < AnimatedButtonProps > = ({ children, className, ...props }) => {
   return (
     <motion.button
       className={className}
@@ -21,4 +20,3 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({ children, className, ..
 };
 
 export default AnimatedButton;
-
