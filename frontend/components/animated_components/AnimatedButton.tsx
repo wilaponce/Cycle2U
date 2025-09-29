@@ -1,18 +1,29 @@
-import { motion, HTMLMotionProps } from 'framer-motion';
-import React from 'react';
+import { motion } from 'framer-motion';
+import React, { ReactNode } from 'react';
 
-interface AnimatedButtonProps extends HTMLMotionProps < 'button' > {
-  children: React.ReactNode;
+type AnimatedButtonProps = {
+  children: ReactNode;
   className ? : string;
-}
+  onClick ? : () => void;
+  type ? : 'button' | 'submit' | 'reset';
+  disabled ? : boolean;
+};
 
-const AnimatedButton: React.FC < AnimatedButtonProps > = ({ children, className, ...props }) => {
+const AnimatedButton = ({
+  children,
+  className,
+  onClick,
+  type = 'button',
+  disabled = false,
+}: AnimatedButtonProps) => {
   return (
     <motion.button
       className={className}
       whileTap={{ scale: 0.95 }}
       transition={{ type: 'spring', stiffness: 300 }}
-      {...props}
+      onClick={onClick}
+      type={type}
+      disabled={disabled}
     >
       {children}
     </motion.button>
