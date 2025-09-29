@@ -9,7 +9,7 @@ RUN npm install
 # Install Tailwind CSS and Framer Motion
 RUN npm install -D tailwindcss postcss autoprefixer
 RUN npm install motion
-
+RUN npm install framer-motion
 
 COPY . .
 
