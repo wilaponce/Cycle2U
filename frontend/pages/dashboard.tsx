@@ -1,7 +1,7 @@
 import React from 'react';
-import { motion } from '../components/animated_components/AnimatedPageWrapper';
-import { motion } from '../components/animated_components/AnimatedCard';
-import { motion } from '../components/animated_components/AnimatedButton';
+import { motion } from './components/animated_components/AnimatedPageWrapper';
+import { motion } from './components/animated_components/AnimatedCard';
+import { motion } from './components/animated_components/AnimatedButton';
 
 export default function Dashboard() {
   return (
