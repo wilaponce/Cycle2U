@@ -65,10 +65,15 @@ jobs:
         cd frontend
         npm fund
         
-    - name: install framer-motion 
+    - name: install motion 
       run: |
         cd frontend 
         npm install motion
+
+    - name: install framer-motion 
+      run: | 
+        cd frontend 
+        npm install framer-motion
   
     - name: Disable Next.js telemetry
       run: |
