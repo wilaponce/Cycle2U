@@ -69,10 +69,6 @@ jobs:
       run: |
         cd frontend 
         npm install framer-motion
-        
-    - name: typescript support for framer-motion 
-      run: | 
-       npm install --save-dev @types/framer-motion
        
     - name: Fix frontend vulnerabilities
       run: |
