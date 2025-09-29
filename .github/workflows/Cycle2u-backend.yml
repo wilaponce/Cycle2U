@@ -68,7 +68,7 @@ jobs:
     - name: install framer-motion 
       run: |
         cd frontend 
-        npm install framer-motion
+        npm install motion
        
     - name: Fix frontend vulnerabilities
       run: |
