@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import React from 'react';
+import { MotionProps } from 'framer-motion';
 
-interface AnimatedButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface AnimatedButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, MotionProps {
   children: React.ReactNode;
   className?: string;
 }
@@ -20,3 +21,4 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({ children, className, ..
 };
 
 export default AnimatedButton;
+
