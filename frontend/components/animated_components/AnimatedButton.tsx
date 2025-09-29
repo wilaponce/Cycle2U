@@ -1,5 +1,6 @@
-import { motion } from 'motion/react';
 import React, { ReactNode } from 'react';
+import { motion } from 'framer-motion';
+
 
 type AnimatedButtonProps = {
   children: ReactNode;
