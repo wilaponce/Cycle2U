@@ -74,6 +74,7 @@ jobs:
       run: | 
         cd frontend 
         npm install framer-motion
+        npm list framer-motion
   
     - name: Disable Next.js telemetry
       run: |
