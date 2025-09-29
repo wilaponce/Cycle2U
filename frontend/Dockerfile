@@ -6,6 +6,10 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 
+# Install Tailwind CSS and Framer Motion
+RUN npm install -D tailwindcss postcss autoprefixer && \
+  npm install framer-motion
+
 COPY . .
 
 EXPOSE 3000
