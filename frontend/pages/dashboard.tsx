@@ -1,8 +1,8 @@
 
 import React from 'react';
-import AnimatedPageWrapper from '../animated_components/AnimatedPageWrapper';
-import AnimatedCard from '../animated_components/AnimatedCard';
-import AnimatedButton from '../animated_components/AnimatedButton';
+import AnimatedPageWrapper from 'components/animated_components/AnimatedPageWrapper';
+import AnimatedCard from 'components/animated_components/AnimatedCard';
+import AnimatedButton from 'components/animated_components/AnimatedButton';
 
 export default function Dashboard() {
   return (
