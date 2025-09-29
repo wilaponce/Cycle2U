@@ -1,7 +1,7 @@
 import React from 'react';
 import AnimatedPageWrapper from '../components/animated_components/AnimatedPageWrapper';
 
-export Dashboard=()=> {
+export Dashboard = () => {
   return (
     <AnimatedPageWrapper>
       <div className="min-h-screen bg-gray-100 p-6" >
