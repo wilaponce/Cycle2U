@@ -1,9 +1,7 @@
 import React from 'react';
-import AnimatedPageWrapper from './components/animated_components/AnimatedPageWrapper';
-import AnimatedCard from './components/animated_components/AnimatedCard';
-import AnimatedButton from './components/animated_components/AnimatedButton';
+import AnimatedPageWrapper from '../components/animated_components/AnimatedPageWrapper';
 
-export default function Dashboard() {
+export Dashboard=()=> {
   return (
     <AnimatedPageWrapper>
       <div className="min-h-screen bg-gray-100 p-6" >
