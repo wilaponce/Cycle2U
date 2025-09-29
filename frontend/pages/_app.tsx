@@ -10,7 +10,7 @@ const protectedRoutes: { [key: string]: string[] } = {
   '/admin-panel': ['admin']
 };
 
-function MyApp({ Component, pageProps }: AppProps) {
+function AuthWrapper({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const { user } = useAuth();
 
@@ -21,11 +21,14 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, [router.pathname, user]);
 
+  return <Component {...pageProps} />;
+}
+
+function MyApp(props: AppProps) {
   return (
     <AuthProvider>
-      <Component {...pageProps} />
+      <AuthWrapper {...props} />
     </AuthProvider>
   );
 }
-
 export default MyApp;
