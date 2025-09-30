@@ -4,8 +4,9 @@ import Layout from '../components/layout';
 
 export default function Home() {
   return (
+     <Layout>
     <AnimatedPageWrapper>
-      <Layout>
+     
       <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-6">
         <h1 className="text-4xl font-bold text-cycleGreen mb-8">Welcome to Cycle2u</h1>
         <nav className="space-y-4 w-full max-w-sm">
@@ -23,7 +24,7 @@ export default function Home() {
           </Link>
         </nav>
       </div>
-      </Layout>
     </AnimatedPageWrapper>
+    </Layout>
   );
 }
