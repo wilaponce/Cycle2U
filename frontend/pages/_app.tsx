@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app';
 import { AnimatePresence } from 'framer-motion';
-import Layout from '../components/Layout';
+import Layout from '../components/layout';
 import '../styles/globals.css';
 import { useRouter } from 'next/router';
 
