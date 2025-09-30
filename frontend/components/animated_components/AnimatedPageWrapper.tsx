@@ -1,22 +1,15 @@
-'use client';
-import React from 'react';
 import { motion } from 'framer-motion';
 
-interface AnimatedPageWrapperProps {
-  children: React.ReactNode;
-}
-
-const AnimatedPageWrapper: React.FC<AnimatedPageWrapperProps> = ({ children }) => {
+export default function AnimatedPageWrapper({ children }: { children: React.ReactNode }) {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.4 }}
+      className="w-full h-full"
     >
       {children}
     </motion.div>
   );
-};
-
-export default AnimatedPageWrapper;
+}

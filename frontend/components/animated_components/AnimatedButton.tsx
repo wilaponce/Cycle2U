@@ -1,35 +1,13 @@
-'use client';
-import React, { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 
-
-type AnimatedButtonProps = {
-  children: ReactNode;
-  className ? : string;
-  onClick ? : () => void;
-  type ? : 'button' | 'submit' | 'reset';
-  disabled ? : boolean;
-};
-
-const AnimatedButton = ({
-  children,
-  className,
-  onClick,
-  type = 'button',
-  disabled = false,
-}: AnimatedButtonProps) => {
+export default function AnimatedButton({ children }: { children: React.ReactNode }) {
   return (
-    <motion.button
-      className={className}
+    <motion.div
+      whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      transition={{ type: 'spring', stiffness: 300 }}
-      onClick={onClick}
-      type={type}
-      disabled={disabled}
+      className="inline-block"
     >
       {children}
-    </motion.button>
+    </motion.div>
   );
-};
-
-export default AnimatedButton;
+}

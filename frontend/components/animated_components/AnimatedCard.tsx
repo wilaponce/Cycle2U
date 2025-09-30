@@ -1,22 +1,14 @@
-'use client';
-import React from 'react';
 import { motion } from 'framer-motion';
 
-interface AnimatedCardProps {
-  children: React.ReactNode;
-  className?: string;
-}
-
-const AnimatedCard: React.FC<AnimatedCardProps> = ({ children, className }) => {
+export default function AnimatedCard({ children }: { children: React.ReactNode }) {
   return (
     <motion.div
-      className={className}
-      whileHover={{ scale: 1.05, boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)' }}
-      transition={{ type: 'spring', stiffness: 300 }}
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.3 }}
+      className="rounded shadow bg-white p-4 hover:shadow-md"
     >
       {children}
     </motion.div>
   );
-};
-
-export default AnimatedCard;
+}
