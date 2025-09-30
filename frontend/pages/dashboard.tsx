@@ -1,6 +1,7 @@
 import AnimatedPageWrapper from '../components/animated_components/AnimatedPageWrapper';
 import AnimatedCard from '../components/animated_components/AnimatedCard';
 import AnimatedButton from '../components/animated_components/AnimatedButton';
+import Layout from '../components/layout';
 
 export default function Dashboard() {
   return (
