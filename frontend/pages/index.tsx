@@ -1,6 +1,6 @@
 import AnimatedPageWrapper from '../components/animated_components/AnimatedPageWrapper';
 import Link from 'next/link';
-import Layout from '../components/Layout';
+import Layout from '../components/layout';
 
 export default function Home() {
   return (
