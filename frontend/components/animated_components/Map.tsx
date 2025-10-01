@@ -19,7 +19,8 @@ const customIcon = new L.Icon({
   iconSize: [25, 41],
   iconAnchor: [12, 41],
 });
-
+ 
+ 
 const Map = ({ requests }: Props) => {
   return (
     <MapContainer
