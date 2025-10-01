@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
+import { easeInOut } from 'framer-motion';
 
 interface Props {
   children: ReactNode;
@@ -13,7 +14,7 @@ const pageVariants = {
 
 const pageTransition = {
   duration: 0.5,
-  ease: 'easeInOut',
+  ease: easeInOut,
 };
 
 const AnimatedPageWrapper = ({ children }: Props) => {
