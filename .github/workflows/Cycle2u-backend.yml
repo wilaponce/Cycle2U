@@ -76,7 +76,7 @@ jobs:
         npm install framer-motion
         npm list framer-motion
         
-     name: Install TypeScript dependencies
+    - name: Install TypeScript dependencies
       run: |
        cd frontend
        npm install --save-dev typescript @types/react @types/node
@@ -90,15 +90,11 @@ jobs:
       run: |
         cd frontend
         npm audit fix --force
-        
+  
     - name: Disable Next.js telemetry
       run: |
         cd frontend
         npx next telemetry disable
-    - name: Install Leaflet 
-      run: | 
-        cd frontend
-        npm install react-leaflet leaflet
 
     - name: Configure Next.js build caching
       uses: actions/cache@v3
@@ -107,7 +103,7 @@ jobs:
         key: ${{ runner.os }}-nextjs-${{ hashFiles('frontend/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-nextjs-
-          
+        
     - name: Build Next.js frontend
       run: |
         cd frontend
@@ -118,6 +114,9 @@ jobs:
        sudo curl -L "https://github.com/docker/compose/releases/download/v2.24.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
        sudo chmod +x /usr/local/bin/docker-compose
        docker-compose version
+
+    - name: Run backend with Docker Compose
+      run: docker-compose -f docker-compose.yml up --build -d
 
     - name: Run backend with Docker Compose
       run: docker-compose -f docker-compose.yml up --build -d
