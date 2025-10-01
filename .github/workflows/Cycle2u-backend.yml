@@ -58,56 +58,19 @@ jobs:
     - name: Install frontend dependencies
       run: |
         cd frontend
-        npm install
-        
-    - name: install motion 
-      run: |
-        cd frontend 
-        npm install motion
-
-    - name: install framer-motion 
-      run: | 
-        cd frontend 
-        npm install framer-motion
-        npm list framer-motion
-        
-    - name: Install TypeScript dependencies
-      run: |
-       cd frontend
-       npm install --save-dev typescript @types/react @types/node
-       
-    - name: Uninstall and Install react and react dom
-      run: |
-       cd frontend 
-       npm uninstall react react-dom
-       npm install react@18.2.0 react-dom@18.2.0
-       
-    - name: Install Leaflet
-      run: | 
-       cd frontend
-       npm install leaflet@1.9.4 react-leaflet@4.2.1
-       npm install --save-dev @types/leaflet
-       
-    - name: install vercel analytics 
-      run: |
-       cd frontend 
-       npm install @vercel/analytics
-       
-    - name: Show frontend funding info
-      run: |
-        cd frontend
-        npm fund
-    
-    - name: Fix frontend vulnerabilities
-      run: |
-        cd frontend
-        npm audit fix --force
-  
-    - name: Disable Next.js telemetry
-      run: |
-        cd frontend
+        npm install react@18.2.0 react-dom@18.2.0
+        npm install react-leaflet@4.2.1 leaflet@1.9.4
+        npm install framer-motion motion
+        npm install --save-dev typescript @types/react @types/node @types/leaflet
+        npm install --save-dev typescript @types/react @types/node
+        npm install @vercel/analytics
         npx next telemetry disable
-
+    
+    - name: Build Next.js frontend
+      run: |
+        cd frontend
+        npm run build
+    
     - name: Configure Next.js build caching
       uses: actions/cache@v3
       with:
@@ -115,11 +78,6 @@ jobs:
         key: ${{ runner.os }}-nextjs-${{ hashFiles('frontend/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-nextjs-
-        
-    - name: Build Next.js frontend
-      run: |
-        cd frontend
-        npm run build
         
     - name: Install Docker Compose
       run: |
