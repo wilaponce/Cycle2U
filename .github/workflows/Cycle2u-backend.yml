@@ -84,7 +84,7 @@ jobs:
     - name: Install Leaflet
       run: | 
        cd frontend
-       npm install react-leaflet leaflet
+       npm install react-leaflet@4.2.1 leaflet
        
     - name: install vercel analytics 
       run: |
