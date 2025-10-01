@@ -23,15 +23,13 @@ const customIcon = new L.Icon({
 const Map = ({ requests }: Props) => {
   return (
     <MapContainer
-      center={[34.0522, -118.2437] as [number, number]}
+      center={[34.0522, -118.2437]}
       zoom={10}
       style={{ height: '60vh', width: '100%' }}
     >
       <TileLayer
-        {...{
-          attribution: '&copy; OpenStreetMap contributors',
-          url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-        }}
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution="&copy; OpenStreetMap contributors"
       />
       {requests.map((req) => (
         <Marker key={req.id} position={[req.lat, req.lng]} icon={customIcon}>
