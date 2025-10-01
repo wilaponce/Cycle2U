@@ -2,7 +2,7 @@
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
-import AnimatedPageWrapper from '../components/AnimatedPageWrapper';
+import AnimatedPageWrapper from '../components/animated_components/AnimatedPageWrapper';
 import styles from '../styles/Home.module.css';
 
 const Map = dynamic(() => import('../components/Map'), { ssr: false });
