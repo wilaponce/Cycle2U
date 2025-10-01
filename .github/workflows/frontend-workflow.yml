@@ -6,6 +6,11 @@ on:
       - 'frontend/**'
     branches:
       - '**'
+  pull_request:
+    paths:
+      - 'frontend/**'
+    branches:
+      - '**'
 
 jobs:
   build:
@@ -27,8 +32,21 @@ jobs:
         npm install react-leaflet@4.2.1 leaflet@1.9.4
         npm install framer-motion motion
         npm install --save-dev typescript @types/react @types/node @types/leaflet
+        npm install @vercel/analytics
+        npx next telemetry disable
 
     - name: Build frontend
       run: |
         cd frontend
         npm run build
+
+    - name: Deploy to Vercel
+      uses: amondnet/vercel-action@v25
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        working-directory: ./frontend
+        scope: ${{ secrets.VERCEL_ORG_ID }}
+      env:
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}

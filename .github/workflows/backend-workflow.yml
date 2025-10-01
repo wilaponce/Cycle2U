@@ -20,28 +20,17 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
-    - name: Restore .NET dependencies
-      run: dotnet restore ./backend/Cycle2U.csproj
-      
-    - name: Clean build cache
+    - name: Restore and build backend
       run: |
-        rm -rf ./src/bin
-        rm -rf ./src/obj
-        
-    - name: Install EF Core CLI tools
-      run: dotnet tool install --global dotnet-ef
+        dotnet restore ./backend/Cycle2U.csproj
+        dotnet build ./backend/Cycle2U.csproj --configuration Release
 
-    - name: Install Microsoft.EntityFrameworkCore.Sqlite
-      run: dotnet add ./backend/Cycle2U.csproj package Microsoft.EntityFrameworkCore.Sqlite
-      
-    - name: Build .NET backend
-      run: dotnet build ./backend/Cycle2U.csproj --configuration Release
-
-    - name: Apply EF Core migration to database
+    - name: Apply EF Core migration
       run: dotnet ef database update --project ./backend/Cycle2U.csproj
-      
-    - name: Install Swashbuckle.AspNetCore
-      run: dotnet add ./backend/Cycle2U.csproj package Swashbuckle.AspNetCore
 
-    - name: Publish .NET backend
+    - name: Publish backend
       run: dotnet publish ./backend/Cycle2U.csproj --configuration Release --output ./publish
+    - name: Deploy to Render
+      run: |
+        curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+
