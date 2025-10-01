@@ -49,7 +49,7 @@ app.UseSwaggerUI(c =>
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseCors("AllowAll");=
+app.UseCors("AllowAll");
 app.MapControllers();
 
 app.Run();
