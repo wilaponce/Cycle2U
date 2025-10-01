@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer as LeafletMapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
@@ -22,10 +22,12 @@ const customIcon = new L.Icon({
 
 const Map = ({ requests }: Props) => {
   return (
-    <MapContainer
-      center={[34.0522, -118.2437] as [number, number]}
-      zoom={10}
-      style={{ height: '60vh', width: '100%' }}
+    <LeafletMapContainer
+      {...{
+        center: [34.0522, -118.2437],
+        zoom: 10,
+        style: { height: '60vh', width: '100%' },
+      }}
     >
       <TileLayer
         attribution='&copy; OpenStreetMap contributors'
@@ -39,7 +41,7 @@ const Map = ({ requests }: Props) => {
           </Popup>
         </Marker>
       ))}
-    </MapContainer>
+    </LeafletMapContainer>
   );
 };
 
