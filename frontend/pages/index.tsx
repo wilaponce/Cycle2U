@@ -5,7 +5,7 @@ import Head from 'next/head';
 import AnimatedPageWrapper from '../components/animated_components/AnimatedPageWrapper';
 import styles from '../styles/Home.module.css';
 
-const Map = dynamic(() => import('../components/Map'), { ssr: false });
+const Map = dynamic(() => import('../components/animated_components/Map'), { ssr: false });
 
 interface Request {
   id: string;
