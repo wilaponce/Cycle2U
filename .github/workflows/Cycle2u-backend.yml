@@ -80,7 +80,12 @@ jobs:
       run: |
        cd frontend
        npm install --save-dev typescript @types/react @types/node
-
+       
+    - name: Install Leaflet
+      run: | 
+       cd frontend
+       npm install react-leaflet leaflet
+       
     - name: install vercel analytics 
       run: |
        cd frontend 
