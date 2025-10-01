@@ -59,11 +59,6 @@ jobs:
       run: |
         cd frontend
         npm install
-    
-    - name: Show frontend funding info
-      run: |
-        cd frontend
-        npm fund
         
     - name: install motion 
       run: |
@@ -81,10 +76,15 @@ jobs:
        cd frontend
        npm install --save-dev typescript @types/react @types/node
        
+    - name: Uninstall and Install react and react dom
+      run: |
+       cd frontend 
+       npm uninstall react react-dom
+       npm install react@18.2.0 react-dom@18.2.0
+       
     - name: Install Leaflet
       run: | 
        cd frontend
-       npm install react@18.2.0 react-dom@18.2.0
        npm install leaflet@1.9.4 react-leaflet@4.2.1
        npm install --save-dev @types/leaflet
        
@@ -92,6 +92,11 @@ jobs:
       run: |
        cd frontend 
        npm install @vercel/analytics
+       
+    - name: Show frontend funding info
+      run: |
+        cd frontend
+        npm fund
     
     - name: Fix frontend vulnerabilities
       run: |
