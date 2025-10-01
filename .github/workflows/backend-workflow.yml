@@ -1,0 +1,47 @@
+name: Cycle2U Backend Build
+
+on:
+  push:
+    paths:
+      - 'backend/**'
+    branches:
+      - '**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Restore .NET dependencies
+      run: dotnet restore ./backend/Cycle2U.csproj
+      
+    - name: Clean build cache
+      run: |
+        rm -rf ./src/bin
+        rm -rf ./src/obj
+        
+    - name: Install EF Core CLI tools
+      run: dotnet tool install --global dotnet-ef
+
+    - name: Install Microsoft.EntityFrameworkCore.Sqlite
+      run: dotnet add ./backend/Cycle2U.csproj package Microsoft.EntityFrameworkCore.Sqlite
+      
+    - name: Build .NET backend
+      run: dotnet build ./backend/Cycle2U.csproj --configuration Release
+
+    - name: Apply EF Core migration to database
+      run: dotnet ef database update --project ./backend/Cycle2U.csproj
+      
+    - name: Install Swashbuckle.AspNetCore
+      run: dotnet add ./backend/Cycle2U.csproj package Swashbuckle.AspNetCore
+
+    - name: Publish .NET backend
+      run: dotnet publish ./backend/Cycle2U.csproj --configuration Release --output ./publish
