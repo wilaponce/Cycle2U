@@ -1,6 +1,6 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import L from 'leaflet';
+import { MapContainer, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
 
 interface Request {
   id: string;
@@ -24,7 +24,7 @@ const customIcon = new L.Icon({
 const Map = ({ requests }: Props) => {
   return (
     <MapContainer
-      center={[34.0522, -118.2437]}
+      center={[34.0522, -118.2437]} // Los Angeles
       zoom={10}
       style={{ height: '60vh', width: '100%' }}
     >
@@ -34,10 +34,7 @@ const Map = ({ requests }: Props) => {
       />
       {requests.map((req) => (
         <Marker key={req.id} position={[req.lat, req.lng]} icon={customIcon}>
-          <Popup>
-            <strong>{req.address}</strong><br />
-            Status: {req.status}
-          </Popup>
+          <Popup>{req.address}</Popup>
         </Marker>
       ))}
     </MapContainer>
