@@ -16,7 +16,6 @@
   "typescript": "^5.2.2",
   "framer-motion": "12.23.22",
   "@types/react": "^18.2.0",
-  "@types/node": "^18.17.0",
-  "@types/leaflet": "^4.2.1"
+  "@types/node": "^18.17.0"
   }
 }
