@@ -10,6 +10,7 @@ RUN npm install
 RUN npm install -D tailwindcss postcss autoprefixer
 RUN npm install motion
 RUN npm install framer-motion
+RUN npm install react-leaflet@4.2.1 leaflet
 
 COPY . .
 
