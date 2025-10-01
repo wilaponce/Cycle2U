@@ -1,19 +1,23 @@
-# Frontend Dockerfile
+# Use a lightweight Node.js image
 FROM node:18-alpine
 
+# Set working directory
 WORKDIR /app
 
+# Copy only package files first for better caching
 COPY package*.json ./
-RUN npm install
 
-# Install Tailwind CSS and Framer Motion
-RUN npm install -D tailwindcss postcss autoprefixer
-RUN npm install motion
-RUN npm install framer-motion
-RUN npm install react-leaflet@4.2.1 leaflet
+# Clean npm cache and install only production dependencies
+RUN npm cache clean --force && npm install --production
 
+# Copy the rest of the frontend code
 COPY . .
 
+# Build the frontend (Next.js)
+RUN npm run build
+
+# Expose port (Next.js default)
 EXPOSE 3000
 
-CMD ["npm", "run", "dev"]
+# Start the production server
+CMD ["npm", "start"]
