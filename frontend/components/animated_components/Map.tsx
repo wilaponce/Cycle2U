@@ -1,9 +1,8 @@
 import { MapContainer, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import type { LatLngExpression } from 'leaflet';
 
 const Map = () => {
-  const center: LatLngExpression = [34.0522, -118.2437]; // Los Angeles
+  const center: [number, number] = [34.0522, -118.2437]; // Los Angeles
 
   return (
     <MapContainer
