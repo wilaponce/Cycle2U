@@ -1,23 +1,20 @@
-'use client';
+'use client'; // Required for Next.js App Router
 
-import dynamic from 'next/dynamic';
+import { MapContainer, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
-const MapContainer = dynamic(() => import('react-leaflet').then(mod => mod.MapContainer), { ssr: false });
-const TileLayer = dynamic(() => import('react-leaflet').then(mod => mod.TileLayer), { ssr: false });
-
 const Map = () => {
-  const center: [number, number] = [34.0522, -118.2437];
+  const center: [number, number] = [34.0522, -118.2437]; // Los Angeles
 
   return (
     <MapContainer
-      center={center}
+      center={center as [number, number]} // Explicit tuple type
       zoom={10}
       style={{ height: '60vh', width: '100%' }}
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution={`© OpenStreetMap contributors`}
+        attribution="© OpenStreetMap contributors"
       />
     </MapContainer>
   );
