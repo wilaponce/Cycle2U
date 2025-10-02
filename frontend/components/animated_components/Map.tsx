@@ -11,7 +11,7 @@ const DynamicMapContainer = dynamic(() => import('react-leaflet').then(mod => mo
 });
 
 const Map = () => {
-  const position: LatLngExpression = [34.0522, -118.2437]; // Los Angeles
+  const position: [number, number ] = [34.0522, -118.2437]; // Los Angeles
   
   return (
     <DynamicMapContainer
