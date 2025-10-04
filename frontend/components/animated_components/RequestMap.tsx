@@ -25,7 +25,7 @@ export default function RequestMap({ requests }: Props) {
 
         const map = new maplibregl.Map({
             container: mapRef.current,
-            style: 'https://api.maptiler.com/maps/streets-v2/style.json?key={process.env.NEXT_PUBLIC_MAPTILER_API_KEY',
+            style: `https://api.maptiler.com/maps/streets-v2/style.json?key=${process.env.NEXT_PUBLIC_MAPTILER_API_KEY}`,
             center: [0, 22.54992],
             zoom: 3,
         });
@@ -38,9 +38,9 @@ export default function RequestMap({ requests }: Props) {
                 .setPopup(
                     new maplibregl.Popup().setHTML(
                         `<strong>${req.address}</strong><br/>
-                                                                                                                    <button onclick="window.open('https://www.google.com/maps?q=&layer=c&cbll=${req.lat},${req.lng}', '_blank')">
-                                                                                                                                   Street View
-                                                                                                                                                </button>`
+                                                                                                                                                                                                                                                         <button onclick="window.open('https://www.google.com/maps?q=&layer=c&cbll=${req.lat},${req.lng}', '_blank')">
+                                                                                                                                                                                                                                                                                    Street View
+                                                                                                                                                                                                                                                                                                             </button>`
                     )
                 )
                 .addTo(map);
@@ -83,4 +83,4 @@ export default function RequestMap({ requests }: Props) {
             <div className={styles.mapContainer} ref={mapRef} />
         </div>
     );
-}        
+}
