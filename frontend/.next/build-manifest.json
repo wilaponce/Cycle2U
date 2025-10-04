@@ -5,85 +5,84 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/D_tJiFJA91VakXrOuEk-t/_buildManifest.js",
-    "static/D_tJiFJA91VakXrOuEk-t/_ssgManifest.js"
+    "static/VNwEW7XoRmef95KKyehWP/_buildManifest.js",
+    "static/VNwEW7XoRmef95KKyehWP/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
     "/": [
-      "static/chunks/webpack-0cb9948e73608e8d.js",
+      "static/chunks/webpack-7db9c0006f306cc0.js",
       "static/chunks/framework-fae63b21a27d6472.js",
       "static/chunks/main-5232346dfb644e31.js",
       "static/chunks/739-b12a3597a3005bf9.js",
-      "static/chunks/135-d2405609234199b3.js",
-      "static/chunks/pages/index-d3dfa11ec71c3f17.js"
+      "static/chunks/pages/index-2ef4227656963676.js"
     ],
     "/EmailVerificationSuccess": [
-      "static/chunks/webpack-0cb9948e73608e8d.js",
+      "static/chunks/webpack-7db9c0006f306cc0.js",
       "static/chunks/framework-fae63b21a27d6472.js",
       "static/chunks/main-5232346dfb644e31.js",
       "static/chunks/pages/EmailVerificationSuccess-1342231a3fe8d553.js"
     ],
     "/PasswordResetSuccess": [
-      "static/chunks/webpack-0cb9948e73608e8d.js",
+      "static/chunks/webpack-7db9c0006f306cc0.js",
       "static/chunks/framework-fae63b21a27d6472.js",
       "static/chunks/main-5232346dfb644e31.js",
       "static/chunks/pages/PasswordResetSuccess-3b7f997f10632a14.js"
     ],
     "/_app": [
-      "static/chunks/webpack-0cb9948e73608e8d.js",
+      "static/chunks/webpack-7db9c0006f306cc0.js",
       "static/chunks/framework-fae63b21a27d6472.js",
       "static/chunks/main-5232346dfb644e31.js",
-      "static/css/f9151cacbfc6d2ac.css",
-      "static/chunks/pages/_app-68d3b2e2ad30d1dc.js"
+      "static/css/88463a42c23b82ab.css",
+      "static/chunks/pages/_app-f41757ce269aa143.js"
     ],
     "/_error": [
-      "static/chunks/webpack-0cb9948e73608e8d.js",
+      "static/chunks/webpack-7db9c0006f306cc0.js",
       "static/chunks/framework-fae63b21a27d6472.js",
       "static/chunks/main-5232346dfb644e31.js",
       "static/chunks/pages/_error-ee5b5fb91d29d86f.js"
     ],
     "/dashboard": [
-      "static/chunks/webpack-0cb9948e73608e8d.js",
+      "static/chunks/webpack-7db9c0006f306cc0.js",
       "static/chunks/framework-fae63b21a27d6472.js",
       "static/chunks/main-5232346dfb644e31.js",
       "static/chunks/739-b12a3597a3005bf9.js",
       "static/chunks/pages/dashboard-79301f630ab25e40.js"
     ],
     "/driver-portal": [
-      "static/chunks/webpack-0cb9948e73608e8d.js",
+      "static/chunks/webpack-7db9c0006f306cc0.js",
       "static/chunks/framework-fae63b21a27d6472.js",
       "static/chunks/main-5232346dfb644e31.js",
       "static/chunks/739-b12a3597a3005bf9.js",
       "static/chunks/pages/driver-portal-ec133d7e061aade5.js"
     ],
     "/email_verification_confirm": [
-      "static/chunks/webpack-0cb9948e73608e8d.js",
+      "static/chunks/webpack-7db9c0006f306cc0.js",
       "static/chunks/framework-fae63b21a27d6472.js",
       "static/chunks/main-5232346dfb644e31.js",
       "static/chunks/pages/email_verification_confirm-8b0737d3194309b2.js"
     ],
     "/login": [
-      "static/chunks/webpack-0cb9948e73608e8d.js",
+      "static/chunks/webpack-7db9c0006f306cc0.js",
       "static/chunks/framework-fae63b21a27d6472.js",
       "static/chunks/main-5232346dfb644e31.js",
       "static/chunks/739-b12a3597a3005bf9.js",
       "static/chunks/pages/login-5ff8449535f7238f.js"
     ],
     "/password_reset_confirm": [
-      "static/chunks/webpack-0cb9948e73608e8d.js",
+      "static/chunks/webpack-7db9c0006f306cc0.js",
       "static/chunks/framework-fae63b21a27d6472.js",
       "static/chunks/main-5232346dfb644e31.js",
       "static/chunks/pages/password_reset_confirm-e2292ad18ee1c010.js"
     ],
     "/register": [
-      "static/chunks/webpack-0cb9948e73608e8d.js",
+      "static/chunks/webpack-7db9c0006f306cc0.js",
       "static/chunks/framework-fae63b21a27d6472.js",
       "static/chunks/main-5232346dfb644e31.js",
       "static/chunks/pages/register-63f44d66e75e6bbd.js"
     ],
     "/signup": [
-      "static/chunks/webpack-0cb9948e73608e8d.js",
+      "static/chunks/webpack-7db9c0006f306cc0.js",
       "static/chunks/framework-fae63b21a27d6472.js",
       "static/chunks/main-5232346dfb644e31.js",
       "static/chunks/739-b12a3597a3005bf9.js",

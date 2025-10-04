@@ -1,26 +1,43 @@
-// pages/RequestMap.tsx
-import { APIProvider, Map } from '@vis.gl/react-google-maps';
 
-const containerStyle = {
-  width: '100%',
-  height: '60vh',
-};
+// components/animated_components/RequestMap.tsx
+import { useEffect, useRef } from 'react';
+import maplibregl from 'maplibre-gl';
+import 'maplibre-gl/dist/maplibre-gl.css';
 
-const center = {
-  lat: 32.7157,
-  lng: -117.1611, // San Diego
-};
-
-export default function RequestMap() {
-  return (
-    <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!}>
-      <Map
-        style={containerStyle}
-        center={center}
-        zoom={13}
-      >
-        {/* Add markers or other components here */}
-      </Map>
-    </APIProvider>
-  );
+interface Request {
+  id: string;
+  lat: number;
+  lng: number;
+  address: string;
+  status: 'pending' | 'completed';
 }
+
+interface Props {
+  requests: Request[];
+}
+
+export default function RequestMap({ requests }: Props) {
+  const mapRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!mapRef.current) return;
+
+    const map = new maplibregl.Map({
+      container: mapRef.current,
+      style: 'https://demotiles.maplibre.org/style.json',
+      center: [0, 22.54992],
+      zoom: 3,
+    });
+    requests.forEach((req) => {
+      new maplibregl.Marker({ color: req.status === 'pending' ? 'orange' : 'green' })
+        .setLngLat([req.lng, req.lat])
+        .setPopup(new maplibregl.Popup().setText(req.address))
+        .addTo(map);
+    });
+
+    return () => map.remove();
+  }, [requests]);
+
+  return <div ref={mapRef} style={{ width: '100vw', height: '100vh' }} />;
+}
+                                                      
