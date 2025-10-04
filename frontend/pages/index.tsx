@@ -37,8 +37,9 @@ export default function Home() {
             <h1>♻️ Cycle2U</h1>
             <p>Empowering communities through smart recycling and gig-driven pickups.</p>
           </section>
-
+          <section>
           <MapComponent requests={requests} />
+          </section>
         </main>
       </AnimatedPageWrapper>
     </>
