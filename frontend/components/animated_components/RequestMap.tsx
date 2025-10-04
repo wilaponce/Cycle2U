@@ -38,6 +38,5 @@ export default function RequestMap({ requests }: Props) {
     return () => map.remove();
   }, [requests]);
 
-  return <div ref={mapRef} style={{ width: '100vw', height: '100vh' }} />;
-}
-                                                      
+  return <div ref={mapRef} style={{ width: '60vw', height: '60vh' }} />;
+}                     
