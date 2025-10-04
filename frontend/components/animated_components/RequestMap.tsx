@@ -25,7 +25,7 @@ export default function RequestMap({ requests }: Props) {
 
         const map = new maplibregl.Map({
             container: mapRef.current,
-            style: 'https://api.maptiler.com/maps/streets/style.json?key=${process.env.NEXT_PUBLIC_MAPTILER_API_KEY}',
+            style: 'https://api.maptiler.com/maps/streets-v2/style.json?key={process.env.NEXT_PUBLIC_MAPTILER_API_KEY',
             center: [0, 22.54992],
             zoom: 3,
         });
