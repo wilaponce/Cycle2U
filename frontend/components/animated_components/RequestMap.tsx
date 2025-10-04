@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import styles from '../../styles/RequestMap.module.css';
+import styles from '../styles/RequestMap.module.css';
 
 interface Request {
     id: string;
@@ -39,8 +39,8 @@ export default function RequestMap({ requests }: Props) {
                     new maplibregl.Popup().setHTML(
                         `<strong>${req.address}</strong><br/>
                                                                                                                                                                                                                                                          <button onclick="window.open('https://www.google.com/maps?q=&layer=c&cbll=${req.lat},${req.lng}', '_blank')">
-                                                                                                                                                                                                                                                                                    Street View
-                                                                                                                                                                                                                                                                                                             </button>`
+                                                                                                                                                                                                                                                                                      Street View
+                                                                                                                                                                                                                                                                                                               </button>`
                     )
                 )
                 .addTo(map);
