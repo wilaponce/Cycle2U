@@ -1,8 +1,8 @@
-
 // components/animated_components/RequestMap.tsx
 import { useEffect, useRef } from 'react';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
+import styles from './RequestMap.module.css'; // Import CSS module
 
 interface Request {
   id: string;
@@ -38,5 +38,6 @@ export default function RequestMap({ requests }: Props) {
     return () => map.remove();
   }, [requests]);
 
-  return <div ref={mapRef} style={{ width: '60vw', height: '60vh' }} />;
-}                     
+  return <div className={styles.mapContainer} ref={mapRef} />;
+}
+    
