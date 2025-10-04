@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import styles from './RequestMap.module.css'; // Import CSS module
+import styles from '../../styles/RequestMap.module.css'; // Import CSS module
 
 interface Request {
   id: string;
