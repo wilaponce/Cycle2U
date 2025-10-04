@@ -1,6 +1,65 @@
-.mapContainer {
+.mapWrapper {
     position: relative;
     width: 100%;
-    height: calc(100vh - 100px);
-    /* Adjust based on header/footer height */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.searchForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+    width: 90%;
+    max-width: 600px;
+}
+
+.searchInput {
+    flex: 1;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px 0 0 6px;
+    outline: none;
+}
+
+.searchButton {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+}
+
+.searchButton:hover {
+    background-color: #005bb5;
+}
+
+.mapContainer {
+    width: 100%;
+    height: 80vh;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .searchForm {
+        flex-direction: column;
+    }
+
+    .searchInput,
+    .searchButton {
+        width: 100%;
+        border-radius: 6px;
+        margin: 0.25rem 0;
+    }
+
+    .mapContainer {
+        height: 70vh;
+    }
 }
