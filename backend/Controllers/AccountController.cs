@@ -6,7 +6,7 @@ using Cycle2U.Models;
 using Cycle2U.Data;
 using Cycle2U.ViewModels;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization
+using Microsoft.AspNetCore.Authorization;
 
 namespace Cycle2U.Controllers
 {
