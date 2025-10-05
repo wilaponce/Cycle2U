@@ -15,15 +15,23 @@ namespace Cycle2U.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-       private readonly IEmailSender _emailSender;
-        public AccountController(UserManager<ApplicationUser> userManager,IEmailSender emailSender,
+        private readonly IEmailSender _emailSender;
+        private readonly JwtTokenService _jwtService;
+        private readonly ApplicationDbContext _context;
+
+        public AccountController(UserManager<ApplicationUser> userManager,
+                                 IEmailSender emailSender,
                                  SignInManager<ApplicationUser> signInManager,
-                                 RoleManager<IdentityRole> roleManager)
+                                 RoleManager<IdentityRole> roleManager,
+                                 JwtTokenService jwtService,
+                                 ApplicationDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
             _emailSender = emailSender;
+            _jwtService = jwtService;
+            _context = context;
         }
 
         [HttpPost("Register")]
@@ -60,16 +68,45 @@ namespace Cycle2U.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user == null || !await _userManager.CheckPasswordAsync(user, model.Password))
+                return Unauthorized("Invalid credentials");
 
-            if (result.Succeeded)
+            var roles = await _userManager.GetRolesAsync(user);
+            var accessToken = _jwtService.GenerateAccessToken(user, roles);
+            var refreshToken = _jwtService.GenerateRefreshToken();
+
+            _context.RefreshTokens.Add(new RefreshToken
             {
-                return Ok("Login successful.");
-            }
+                Token = refreshToken,
+                ExpiryDate = DateTime.UtcNow.AddDays(7),
+                UserId = user.Id
+            });
 
-            return Unauthorized("Invalid login attempt.");
+            await _context.SaveChangesAsync();
+
+            return Ok(new { accessToken, refreshToken });
         }
-     [HttpPost("RequestPasswordReset")]
+
+        [HttpPost("RefreshToken")]
+        public async Task<IActionResult> RefreshToken([FromBody] string token)
+        {
+            var storedToken = await _context.RefreshTokens.FirstOrDefaultAsync(rt => rt.Token == token);
+            if (storedToken == null || storedToken.ExpiryDate < DateTime.UtcNow)
+                return Unauthorized("Invalid or expired refresh token");
+
+            var user = await _userManager.FindByIdAsync(storedToken.UserId);
+            var roles = await _userManager.GetRolesAsync(user);
+            var newAccessToken = _jwtService.GenerateAccessToken(user, roles);
+
+            return Ok(new { accessToken = newAccessToken });
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet("AdminOnly")]
+        public IActionResult AdminOnly() => Ok("Welcome Admin!");
+        
+        [HttpPost("RequestPasswordReset")]
         public async Task<IActionResult> RequestPasswordReset([FromBody] string email)
         {
             var user = await _userManager.FindByEmailAsync(email);
