@@ -29,7 +29,7 @@ jobs:
       run: dotnet ef database update --project ./backend/Cycle2U.csproj
     - name: Add JWT auth support
       run: dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
-.          dotnet add package System.IdentityModel.Tokens.Jwt
+           dotnet add package System.IdentityModel.Tokens.Jwt
 
     - name: Publish backend
       run: dotnet publish ./backend/Cycle2U.csproj --configuration Release --output ./publish
