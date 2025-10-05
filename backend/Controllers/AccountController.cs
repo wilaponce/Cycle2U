@@ -97,8 +97,11 @@ namespace Cycle2U.Controllers
             var storedToken = await _context.RefreshTokens.FirstOrDefaultAsync(rt => rt.Token == token);
             if (storedToken == null || storedToken.ExpiryDate < DateTime.UtcNow)
                 return Unauthorized("Invalid or expired refresh token");
-
+            
             var user = await _userManager.FindByIdAsync(storedToken.UserId);
+            if (user == null || !await _userManager.CheckPasswordAsync(user, storedToken.Password))
+                            return Unauthorized("Invalid credentials");
+                            
             var roles = await _userManager.GetRolesAsync(user);
             var newAccessToken = _jwtService.GenerateAccessToken(user, roles);
 
