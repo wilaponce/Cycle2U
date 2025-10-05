@@ -10,9 +10,6 @@ namespace Cycle2U.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        public required string Token { get; set; }
-
         public DateTime Expires { get; set; }
 
         public bool IsExpired => DateTime.UtcNow >= Expires;
