@@ -99,7 +99,7 @@ namespace Cycle2U.Controllers
                 return Unauthorized("Invalid or expired refresh token");
             
             var user = await _userManager.FindByIdAsync(storedToken.UserId);
-            if (user == null || !await _userManager.CheckPasswordAsync(user, storedToken.Password))
+            if (user == null || !await _userManager.CheckPasswordAsync(user, storedToken.Token))
                             return Unauthorized("Invalid credentials");
                             
             var roles = await _userManager.GetRolesAsync(user);
