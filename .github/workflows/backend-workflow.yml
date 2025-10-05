@@ -22,6 +22,7 @@ jobs:
         
     - name: Add JWT auth support
       run: | 
+        cd backend
         dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
         dotnet add package System.IdentityModel.Tokens.Jwt
         
