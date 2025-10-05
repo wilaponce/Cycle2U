@@ -19,12 +19,6 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '8.0.x'
-        
-    - name: Add JWT auth support
-      run: | 
-        cd backend
-        dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
-        dotnet add package System.IdentityModel.Tokens.Jwt
            
     - name: Restore and build backend
       run: |
@@ -33,7 +27,13 @@ jobs:
 
     - name: Apply EF Core migration
       run: dotnet ef database update --project ./backend/Cycle2U.csproj
-
+      
+    - name: Add JWT auth support
+      run: | 
+        cd backend
+        dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
+        dotnet add package System.IdentityModel.Tokens.Jwt
+        
     - name: Publish backend
       run: dotnet publish ./backend/Cycle2U.csproj --configuration Release --output ./publish
     - name: Deploy to Render
