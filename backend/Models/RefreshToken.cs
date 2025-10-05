@@ -22,9 +22,15 @@ namespace Cycle2U.Models
         public DateTime? Revoked { get; set; }
 
         public bool IsActive => Revoked == null && !IsExpired;
+        
+        // The actual token string
+        public string Token { get; set; } = Guid.NewGuid().ToString();
 
-        [ForeignKey("UserId")]
-        public required ApplicationUser User { get; set; }
+        // Expiration date of the refresh token
+        public DateTime ExpiryDate { get; set; }
+
+        // Navigation property to the ApplicationUser
+        public ApplicationUser User { get; set; } = new ApplicationUser();
 
         public required string UserId { get; set; }
     }
