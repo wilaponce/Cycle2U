@@ -1,3 +1,4 @@
+
 namespace Cycle2U.Middleware
 {
     public class TokenExpirationMiddleware
