@@ -6,6 +6,8 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 COPY . .
+Run dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
+RUN dotnet add package System.IdentityModel.Tokens.Jwt
 RUN dotnet restore Cycle2U.csproj
 RUN dotnet publish Cycle2U.csproj -c Release -o /app/publish
 
