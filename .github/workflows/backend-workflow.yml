@@ -21,7 +21,7 @@ jobs:
         dotnet-version: '8.0.x'
         
     - name: Add JWT auth support
-      run: dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
+      run: cd backend dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
            dotnet add package System.IdentityModel.Tokens.Jwt
            
     - name: Restore and build backend
