@@ -5,84 +5,84 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/Xvn3w4FlaeDL3v9k42oGI/_buildManifest.js",
-    "static/Xvn3w4FlaeDL3v9k42oGI/_ssgManifest.js"
+    "static/yFLQbZ0l24nywyub1Ayoo/_buildManifest.js",
+    "static/yFLQbZ0l24nywyub1Ayoo/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
     "/": [
-      "static/chunks/webpack-07d4eeccb2b99392.js",
+      "static/chunks/webpack-cd98c2f7b1432295.js",
       "static/chunks/framework-fae63b21a27d6472.js",
       "static/chunks/main-5232346dfb644e31.js",
       "static/chunks/739-b12a3597a3005bf9.js",
       "static/chunks/pages/index-0232bbfceec07a2b.js"
     ],
     "/EmailVerificationSuccess": [
-      "static/chunks/webpack-07d4eeccb2b99392.js",
+      "static/chunks/webpack-cd98c2f7b1432295.js",
       "static/chunks/framework-fae63b21a27d6472.js",
       "static/chunks/main-5232346dfb644e31.js",
       "static/chunks/pages/EmailVerificationSuccess-1342231a3fe8d553.js"
     ],
     "/PasswordResetSuccess": [
-      "static/chunks/webpack-07d4eeccb2b99392.js",
+      "static/chunks/webpack-cd98c2f7b1432295.js",
       "static/chunks/framework-fae63b21a27d6472.js",
       "static/chunks/main-5232346dfb644e31.js",
       "static/chunks/pages/PasswordResetSuccess-3b7f997f10632a14.js"
     ],
     "/_app": [
-      "static/chunks/webpack-07d4eeccb2b99392.js",
+      "static/chunks/webpack-cd98c2f7b1432295.js",
       "static/chunks/framework-fae63b21a27d6472.js",
       "static/chunks/main-5232346dfb644e31.js",
       "static/css/88463a42c23b82ab.css",
       "static/chunks/pages/_app-f41757ce269aa143.js"
     ],
     "/_error": [
-      "static/chunks/webpack-07d4eeccb2b99392.js",
+      "static/chunks/webpack-cd98c2f7b1432295.js",
       "static/chunks/framework-fae63b21a27d6472.js",
       "static/chunks/main-5232346dfb644e31.js",
       "static/chunks/pages/_error-ee5b5fb91d29d86f.js"
     ],
     "/dashboard": [
-      "static/chunks/webpack-07d4eeccb2b99392.js",
+      "static/chunks/webpack-cd98c2f7b1432295.js",
       "static/chunks/framework-fae63b21a27d6472.js",
       "static/chunks/main-5232346dfb644e31.js",
       "static/chunks/739-b12a3597a3005bf9.js",
       "static/chunks/pages/dashboard-79301f630ab25e40.js"
     ],
     "/driver-portal": [
-      "static/chunks/webpack-07d4eeccb2b99392.js",
+      "static/chunks/webpack-cd98c2f7b1432295.js",
       "static/chunks/framework-fae63b21a27d6472.js",
       "static/chunks/main-5232346dfb644e31.js",
       "static/chunks/739-b12a3597a3005bf9.js",
       "static/chunks/pages/driver-portal-ec133d7e061aade5.js"
     ],
     "/email_verification_confirm": [
-      "static/chunks/webpack-07d4eeccb2b99392.js",
+      "static/chunks/webpack-cd98c2f7b1432295.js",
       "static/chunks/framework-fae63b21a27d6472.js",
       "static/chunks/main-5232346dfb644e31.js",
       "static/chunks/pages/email_verification_confirm-8b0737d3194309b2.js"
     ],
     "/login": [
-      "static/chunks/webpack-07d4eeccb2b99392.js",
+      "static/chunks/webpack-cd98c2f7b1432295.js",
       "static/chunks/framework-fae63b21a27d6472.js",
       "static/chunks/main-5232346dfb644e31.js",
       "static/chunks/739-b12a3597a3005bf9.js",
       "static/chunks/pages/login-5ff8449535f7238f.js"
     ],
     "/password_reset_confirm": [
-      "static/chunks/webpack-07d4eeccb2b99392.js",
+      "static/chunks/webpack-cd98c2f7b1432295.js",
       "static/chunks/framework-fae63b21a27d6472.js",
       "static/chunks/main-5232346dfb644e31.js",
       "static/chunks/pages/password_reset_confirm-e2292ad18ee1c010.js"
     ],
     "/register": [
-      "static/chunks/webpack-07d4eeccb2b99392.js",
+      "static/chunks/webpack-cd98c2f7b1432295.js",
       "static/chunks/framework-fae63b21a27d6472.js",
       "static/chunks/main-5232346dfb644e31.js",
       "static/chunks/pages/register-63f44d66e75e6bbd.js"
     ],
     "/signup": [
-      "static/chunks/webpack-07d4eeccb2b99392.js",
+      "static/chunks/webpack-cd98c2f7b1432295.js",
       "static/chunks/framework-fae63b21a27d6472.js",
       "static/chunks/main-5232346dfb644e31.js",
       "static/chunks/739-b12a3597a3005bf9.js",
