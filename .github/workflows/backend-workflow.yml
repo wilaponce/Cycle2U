@@ -18,16 +18,15 @@ jobs:
     - name: Set up .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '8.0.x'
+        dotnet-version: '9.0.x'
         
     - name: Restore and build backend
       run: |
         dotnet restore ./backend/Cycle2U.csproj
         dotnet build ./backend/Cycle2U.csproj --configuration Release
-
-    - name: Apply EF Core migration
-      run: dotnet ef database update --project ./backend/Cycle2U.csproj
-        
+    - name: Database Migrations
+      run: | 
+       dotnet ef database update --project ./backend/Cycle2U.csproj
     - name: Publish backend
       run: dotnet publish ./backend/Cycle2U.csproj --configuration Release --output ./publish
     - name: Deploy to Render
