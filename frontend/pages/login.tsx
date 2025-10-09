@@ -7,7 +7,7 @@ export default function Login() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    const res = await fetch("/api/account/Login", {
+    const res = await fetch("https://cycle2u.onrender.com/api/account/Login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
