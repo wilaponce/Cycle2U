@@ -2,7 +2,7 @@
   channel = "stable-24.05";
   packages = [
     pkgs.nodejs_20
-    pkgs.dotnetCorePackages.sdk_9_0
+    pkgs.dotnetCorePackages.sdk_8_0
   ];
   idx.extensions = [
 
