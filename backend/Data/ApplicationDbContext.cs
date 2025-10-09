@@ -6,8 +6,8 @@ namespace Cycle2U.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
+        public ApplicationDbContext()
+            : base()
         {
         }
 
@@ -22,8 +22,8 @@ namespace Cycle2U.Data
                 .OnDelete(DeleteBehavior.Restrict);
         }
 
-        public DbSet<PickupRequest> PickupRequests { get; set; }
-        public DbSet<Driver> Drivers { get; set; }
-        public DbSet<RefreshToken> RefreshTokens { get; set; }
+        public DbSet<PickupRequest>? PickupRequests { get; set; }
+        public DbSet<Driver>? Drivers { get; set; }
+        public DbSet<RefreshToken>? RefreshTokens { get; set; }
     }
 }

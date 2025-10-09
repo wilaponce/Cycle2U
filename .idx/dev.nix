@@ -2,9 +2,10 @@
   channel = "stable-24.05";
   packages = [
     pkgs.nodejs_20
+    pkgs.dotnetCorePackages.sdk_9_0
   ];
   idx.extensions = [
-    
+
   ];
   idx.previews = {
     previews = {
