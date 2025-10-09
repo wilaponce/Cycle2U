@@ -26,7 +26,4 @@ jobs:
         dotnet build ./backend/Cycle2U.csproj --configuration Release
     - name: Publish backend
       run: dotnet publish ./backend/Cycle2U.csproj --configuration Release --output ./publish
-    - name: Deploy to Render
-      run: |
-        curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
 
