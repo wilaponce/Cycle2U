@@ -24,10 +24,6 @@ jobs:
       run: |
         dotnet restore ./backend/Cycle2U.csproj
         dotnet build ./backend/Cycle2U.csproj --configuration Release
-    - name: Database Migrations
-      run: |
-      dotnet tool install --global dotnet-ef ENV PATH="$PATH:root/.dotnet/tools"
-
     - name: Publish backend
       run: dotnet publish ./backend/Cycle2U.csproj --configuration Release --output ./publish
     - name: Deploy to Render
