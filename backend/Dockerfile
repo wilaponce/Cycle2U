@@ -2,6 +2,9 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
+# Install SQLite native dependencies
+RUN apt-get update && apt-get install -y libsqlite3-dev
+
 # Copy csproj and restore as distinct layers
 COPY Cycle2U.csproj .
 RUN dotnet restore Cycle2U.csproj
