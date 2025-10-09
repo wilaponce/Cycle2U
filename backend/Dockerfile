@@ -10,9 +10,8 @@ RUN dotnet restore Cycle2U.csproj
 COPY . .
 WORKDIR /src
 
-# Install dotnet-ef tool
-RUN dotnet tool install --global dotnet-ef
-ENV PATH="$PATH:/root/.dotnet/tools"
+# Restore local tools
+RUN dotnet tool restore
 
 # Run database migrations
 RUN dotnet ef database update --project Cycle2U.csproj
