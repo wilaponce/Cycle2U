@@ -1,66 +1,40 @@
-
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Cycle2U.Data;
 using Cycle2U.Models;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
+using Cycle2U.ViewModels;
 
 namespace Cycle2U.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class AdminController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AdminController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+        public AdminController(ApplicationDbContext context)
         {
             _context = context;
-            _userManager = userManager;
-            _roleManager = roleManager;
-        }
-
-        // USERS
-
-        [HttpGet("users")]
-        public async Task<ActionResult<IEnumerable<ApplicationUser>>> GetUsers()
-        {
-            return await _userManager.Users.ToListAsync();
-        }
-
-        [HttpDelete("users/{id}")]
-        public async Task<IActionResult> DeleteUser(string id)
-        {
-            var user = await _userManager.FindByIdAsync(id);
-            if (user == null) return NotFound();
-            var result = await _userManager.DeleteAsync(user);
-            return result.Succeeded ? NoContent() : BadRequest(result.Errors);
-        }
-
-        [HttpPost("users/{id}/assign-role")]
-        public async Task<IActionResult> AssignRole(string id, [FromBody] string role)
-        {
-            var user = await _userManager.FindByIdAsync(id);
-            if (user == null) return NotFound();
-            if (!await _roleManager.RoleExistsAsync(role))
-            {
-                await _roleManager.CreateAsync(new IdentityRole(role));
-            }
-            var result = await _userManager.AddToRoleAsync(user, role);
-            return result.Succeeded ? Ok() : BadRequest(result.Errors);
         }
 
         // DRIVERS
 
         [HttpGet("drivers")]
-        public async Task<ActionResult<IEnumerable<Driver>>> GetDrivers()
+        public async Task<ActionResult<IEnumerable<DriverViewModel>>> GetDrivers()
         {
-            return await _context.Drivers.ToListAsync();
+            return await _context.Drivers.Select(d => new DriverViewModel
+            {
+                Id = d.Id,
+                Name = d.Name,
+                IsAvailable = d.IsAvailable,
+                Latitude = d.Latitude,
+                Longitude = d.Longitude
+            }).ToListAsync();
         }
 
         [HttpPut("drivers/{id}/availability")]
@@ -87,9 +61,18 @@ namespace Cycle2U.Controllers
         // PICKUP REQUESTS
 
         [HttpGet("requests")]
-        public async Task<ActionResult<IEnumerable<PickupRequest>>> GetPickupRequests()
+        public async Task<ActionResult<IEnumerable<PickupRequestViewModel>>> GetPickupRequests()
         {
-            return await _context.PickupRequests.ToListAsync();
+            return await _context.PickupRequests.Select(r => new PickupRequestViewModel
+            {
+                Id = r.Id,
+                UserId = r.UserId,
+                Status = r.Status,
+                Location = r.Location,
+                DriverId = r.DriverId,
+                ScheduledTime = r.ScheduledTime,
+                AssignedDriverId = r.AssignedDriverId
+            }).ToListAsync();
         }
 
         [HttpPut("requests/{id}/status")]
@@ -112,10 +95,20 @@ namespace Cycle2U.Controllers
             return NoContent();
         }
 
-        public class LocationUpdateModel
+        [HttpPut("requests/{id}/assign/{driverId}")]
+        public async Task<IActionResult> AssignDriver(int id, int driverId)
         {
-            public double Latitude { get; set; }
-            public double Longitude { get; set; }
+            var request = await _context.PickupRequests.FindAsync(id);
+            var driver = await _context.Drivers.FindAsync(driverId);
+            if (request == null || driver == null || !driver.IsAvailable)
+                return BadRequest();
+
+            request.DriverId = driverId;
+            request.Status = "Driver Assigned";
+            driver.IsAvailable = false;
+
+            await _context.SaveChangesAsync();
+            return Ok(request);
         }
     }
 }

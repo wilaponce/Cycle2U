@@ -1,8 +1,19 @@
 {
-  "index.tsx -> ../components/animated_components/RequestMap": {
-    "id": "index.tsx -> ../components/animated_components/RequestMap",
+  "../components/AdminDashboard.tsx -> ../components/Map": {
+    "id": 6788,
     "files": [
-      "static/chunks/components_animated_components_RequestMap_tsx.js"
+      "static/chunks/0b7b90cd.e4e31cf6f7fef93f.js",
+      "static/css/d3e383b9ef67ddcb.css",
+      "static/chunks/788.dd4e950948539c0b.js"
+    ]
+  },
+  "index.tsx -> ../components/animated_components/RequestMap": {
+    "id": 3284,
+    "files": [
+      "static/chunks/d94c0b71.d597e2ba3a511e38.js",
+      "static/css/4b738d112fb62c81.css",
+      "static/css/f71d31329904c67a.css",
+      "static/chunks/284.02140bbb306cae91.js"
     ]
   }
 }

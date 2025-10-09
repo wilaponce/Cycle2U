@@ -1,17 +1,13 @@
-import type { AppProps } from 'next/app';
-import { AnimatePresence } from 'framer-motion';
-import Layout from '../components/layout';
+import { AppProps } from 'next/app';
+import { AuthProvider } from '../context/AuthContext';
 import '../styles/globals.css';
-import { useRouter } from 'next/router';
-import 'maplibre-gl/dist/maplibre-gl.css';
 
-export default function App({ Component, pageProps }: AppProps) {
-  const router = useRouter();
+function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Layout>
-      <AnimatePresence mode="wait" initial={false}>
-        <Component {...pageProps} key={router.route} />
-      </AnimatePresence>
-    </Layout>
+    <AuthProvider>
+      <Component {...pageProps} />
+    </AuthProvider>
   );
 }
+
+export default MyApp;

@@ -1,32 +1,9 @@
-export function setTokens(accessToken: string, refreshToken: string) {
-  localStorage.setItem("accessToken", accessToken);
-  localStorage.setItem("refreshToken", refreshToken);
-}
+import { GetServerSidePropsContext } from 'next';
+import nookies from 'nookies';
 
-export function getAccessToken(): string | null {
-  return localStorage.getItem("accessToken");
-}
+const  getToken = (ctx: GetServerSidePropsContext | null = null) => {
+  const cookies = ctx ? nookies.get(ctx) : nookies.get();
+  return cookies.token || null;
+};
 
-export function getRefreshToken(): string | null {
-  return localStorage.getItem("refreshToken");
-}
-
-export async function refreshAccessToken(): Promise<string | null> {
-  const refreshToken = getRefreshToken();
-  if (!refreshToken) return null;
-
-  try {
-    const res = await fetch("/api/account/RefreshToken", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(refreshToken),
-    });
-
-    if (!res.ok) return null;
-    const data = await res.json();
-    setTokens(data.accessToken, refreshToken);
-    return data.accessToken;
-  } catch {
-    return null;
-  }
-}
+export default getToken;

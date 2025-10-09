@@ -14,5 +14,9 @@ namespace Cycle2U.ViewModels
 
         [Required]
         public required string Role { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public required string FullName { get; set; }
     }
 }

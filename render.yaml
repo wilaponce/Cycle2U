@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: cycle2u-backend
+    env: dotnet
+    rootDir: backend
+    buildCommand: "dotnet publish -c Release -o out"
+    startCommand: "dotnet out/Cycle2U.dll"
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production

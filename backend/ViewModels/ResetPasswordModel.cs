@@ -2,13 +2,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Cycle2U.ViewModels
 {
-    public class LoginViewModel
+    public class ResetPasswordModel
     {
         [Required]
-        [EmailAddress]
         public required string Email { get; set; }
-
         [Required]
-        public required string Password { get; set; }
+        public required string Token { get; set; }
+        [Required]
+        public required string NewPassword { get; set; }
     }
 }

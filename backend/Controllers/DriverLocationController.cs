@@ -3,11 +3,14 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using Cycle2U.Models;
 using Cycle2U.Data;
+using Microsoft.AspNetCore.Authorization;
+using Cycle2U.ViewModels;
 
 namespace Cycle2U.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class DriverLocationController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -34,16 +37,4 @@ namespace Cycle2U.Controllers
             return NoContent();
         }
     }
-    
-    public class LocationUpdateModel
-    {
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
-    }
-    public class DriverLocationUpdateModel
-    {
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
-    }
-    
 }
