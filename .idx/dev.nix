@@ -3,6 +3,9 @@
   packages = [
     pkgs.nodejs_20
     pkgs.dotnetCorePackages.sdk_8_0
+    pkgs.docker
+    pkgs.docker-compose
+    pkgs.sudo
   ];
   idx.extensions = [
 
