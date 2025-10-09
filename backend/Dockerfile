@@ -3,12 +3,12 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copy csproj and restore as distinct layers
-COPY backend/Cycle2U.csproj backend/
-RUN dotnet restore backend/Cycle2U.csproj
+COPY Cycle2U.csproj .
+RUN dotnet restore Cycle2U.csproj
 
 # Copy everything else and build
 COPY . .
-WORKDIR /src/backend
+WORKDIR /src
 
 # Install dotnet-ef tool
 RUN dotnet tool install --global dotnet-ef
