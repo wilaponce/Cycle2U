@@ -2,6 +2,7 @@
 # Node.js / Next.js
 node_modules/
 .next/
+/.next/build-manifest.json
 out/
 dist/
 *.tsbuildinfo

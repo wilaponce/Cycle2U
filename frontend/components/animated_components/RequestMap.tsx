@@ -1,7 +1,21 @@
-import { useEffect, useRef, useState } from 'react';
-import maplibregl from 'maplibre-gl';
-import 'maplibre-gl/dist/maplibre-gl.css';
+import { useEffect, useState } from 'react';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
 import styles from '../../styles/RequestMap.module.css';
+
+// Fix for default icon issue with webpack
+import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
+import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+
+delete (L.Icon.Default.prototype as any)._getIconUrl;
+L.Icon.Default.mergeOptions({
+    iconRetinaUrl: markerIcon2x.src,
+    iconUrl: markerIcon.src,
+    shadowUrl: markerShadow.src,
+});
+
 
 interface Request {
     id: string;
@@ -15,43 +29,43 @@ interface Props {
     requests: Request[];
 }
 
-export default function RequestMap({ requests }: Props) {
-    const mapRef = useRef<HTMLDivElement>(null);
-    const [mapInstance, setMapInstance] = useState<maplibregl.Map | null>(null);
-    const [searchQuery, setSearchQuery] = useState('');
+const orangeIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+});
 
+const greenIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+});
+
+
+function MapFlyTo({ center, zoom }: { center: L.LatLngExpression, zoom: number }) {
+    const map = useMap();
     useEffect(() => {
-        if (!mapRef.current) return;
+        if (center) {
+            map.flyTo(center, zoom);
+        }
+    }, [center, zoom, map]);
+    return null;
+}
 
-        const map = new maplibregl.Map({
-            container: mapRef.current,
-            style: `https://api.maptiler.com/maps/streets-v2/style.json?key=${process.env.NEXT_PUBLIC_MAPTILER_API_KEY}`,
-            center: [0, 22.54992],
-            zoom: 3,
-        });
-        map.addControl(new maplibregl.NavigationControl(), 'top-right');
-        setMapInstance(map);
 
-        requests.forEach((req) => {
-            const marker = new maplibregl.Marker({ color: req.status === 'pending' ? 'orange' : 'green' })
-                .setLngLat([req.lng, req.lat])
-                .setPopup(
-                    new maplibregl.Popup().setHTML(
-                        `<strong>${req.address}</strong><br/>
-                                                                                                                                                                                                                                                         <button onclick="window.open('https://www.google.com/maps?q=&layer=c&cbll=${req.lat},${req.lng}', '_blank')">
-                                                                                                                                                                                                                                                                                      Street View
-                                                                                                                                                                                                                                                                                                               </button>`
-                    )
-                )
-                .addTo(map);
-        });
-
-        return () => map.remove();
-    }, [requests]);
+export default function RequestMap({ requests }: Props) {
+    const [searchQuery, setSearchQuery] = useState('');
+    const [flyToCenter, setFlyToCenter] = useState<L.LatLngExpression | null>(null);
 
     const handleSearch = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!searchQuery || !mapInstance) return;
+        if (!searchQuery) return;
         try {
             const response = await fetch(
                 `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}`
@@ -59,7 +73,7 @@ export default function RequestMap({ requests }: Props) {
             const data = await response.json();
             if (data && data.length > 0) {
                 const { lat, lon } = data[0];
-                mapInstance.flyTo({ center: [parseFloat(lon), parseFloat(lat)], zoom: 14 });
+                setFlyToCenter([parseFloat(lat), parseFloat(lon)]);
             } else {
                 alert('Location not found');
             }
@@ -80,7 +94,28 @@ export default function RequestMap({ requests }: Props) {
                 />
                 <button type="submit" className={styles.searchButton}>Search</button>
             </form>
-            <div className={styles.mapContainer} ref={mapRef} />
+            <MapContainer center={[22.54992, 0]} zoom={3} style={{ height: '100%', width: '100%' }} className={styles.mapContainer}>
+                <TileLayer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                />
+                {requests.map(req => (
+                    <Marker
+                        key={req.id}
+                        position={[req.lat, req.lng]}
+                        icon={req.status === 'pending' ? orangeIcon : greenIcon}
+                    >
+                        <Popup>
+                            <strong>{req.address}</strong>
+                            <br />
+                            <button onClick={() => window.open(`https://www.google.com/maps?q=&layer=c&cbll=${req.lat},${req.lng}`, '_blank')}>
+                                Street View
+                            </button>
+                        </Popup>
+                    </Marker>
+                ))}
+                {flyToCenter && <MapFlyTo center={flyToCenter} zoom={14} />}
+            </MapContainer>
         </div>
     );
 }
