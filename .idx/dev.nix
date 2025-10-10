@@ -21,7 +21,7 @@
           "--port"
           "$PORT"
           "--hostname"
-          "0.0.0.0"
+          "127.0.0.1"
         ];
         manager = "web";
       };

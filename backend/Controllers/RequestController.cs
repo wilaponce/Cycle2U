@@ -1,41 +1,34 @@
+
 using Microsoft.AspNetCore.Mvc;
-using Cycle2U.Models;
-using System.Linq;
-using Cycle2U.Data;
 
 namespace Cycle2U.Controllers
 {
-    public class RequestController : Controller
+    [ApiController]
+    [Route("api/[controller]")]
+    public class RequestController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
-
-        public RequestController(ApplicationDbContext context)
+        [HttpGet]
+        public IActionResult Get()
         {
-            _context = context;
-        }
-
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Create(PickupRequest request)
-        {
-            if (ModelState.IsValid)
+            var requests = new[]
             {
-                var availableDriver = _context.Drivers.FirstOrDefault();
-                if (availableDriver != null)
-                {
-                    // TODO: Assign driver and process request
-                    // ...
+                new {
+                    id = "1",
+                    lat = 34.0522,
+                    lng = -118.2437,
+                    address = "123 Main St, Los Angeles, CA",
+                    status = "pending"
+                },
+                new {
+                    id = "2",
+                    lat = 34.0407,
+                    lng = -118.2468,
+                    address = "456 Sunset Blvd, Los Angeles, CA",
+                    status = "completed"
                 }
-                // TODO: Additional logic for when no driver is available
-                // ...
-            }
-            // TODO: Handle invalid model state
-            // ...
-            return View(request);
+            };
+
+            return Ok(requests);
         }
     }
-}                                                                                                                                                                                                                                                                                                                                                                                            
+}

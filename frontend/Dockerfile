@@ -7,8 +7,8 @@ WORKDIR /app
 # Copy only package files first for better caching
 COPY package*.json ./
 
-# Clean npm cache and install only production dependencies
-RUN npm cache clean --force && npm install --production
+# Clean npm cache and install only dev dependencies
+RUN npm cache clean --force && npm install --dev
 
 # Copy the rest of the frontend code
 COPY . .
