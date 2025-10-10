@@ -4,7 +4,7 @@ import { getMessaging } from "firebase/messaging";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDFlQ4ZhPLFC6Ja_oZ0AjRL9BBs7-R9ZsY",
-  authDomain: "cycle2u-70881949-3273a.firebaseapp.com",
+  authDomain: "cycle2u-backend.onrender.com",
   projectId: "cycle2u-70881949-3273a",
   storageBucket: "cycle2u-70881949-3273a.firebasestorage.app",
   messagingSenderId: "86554345025",
