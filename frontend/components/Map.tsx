@@ -1,7 +1,9 @@
+
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Driver, PickupRequest } from '../types';
+import { LatLngExpression } from 'leaflet';
 
 interface MapProps {
   drivers: Driver[];
@@ -9,7 +11,7 @@ interface MapProps {
 }
 
 const Map: React.FC<MapProps> = ({ drivers, requests }) => {
-  const center: any = [40.7128, -74.0060];
+  const center: LatLngExpression = [40.7128, -74.0060];
   return (
     <MapContainer center={center} zoom={13} style={{ height: '100%', width: '100%' }}>
       <TileLayer
