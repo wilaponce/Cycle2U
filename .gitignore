@@ -172,3 +172,4 @@ paket-files/
 .fake/
 AutoTest.Net/
 publish/
+lib/firebaseConfig.js

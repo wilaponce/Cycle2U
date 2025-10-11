@@ -26,7 +26,7 @@
   cursor: pointer;
 }
 
-.menu.active, .userMenu.active {
+.menu, .userMenu {
   position: absolute;
   top: 60px;
   background: white;
@@ -38,7 +38,7 @@
 }
 
 
-.menu.inactive, .userMenu.inactive {
+.menu:not(:focus-within), .userMenu:not(:focus-within) {
   animation: fadeOut 0.3s ease-in forwards;
 }
 
