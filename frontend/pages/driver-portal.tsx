@@ -1,4 +1,4 @@
-import AnimatedPageWrapper from '../components/animated_components/AnimatedPageWrapper';
+import AnimatedPageWrapper from '../components/AnimatedPageWrapper';
 
 export default function DriverPortal() {
   return (

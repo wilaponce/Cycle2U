@@ -2,7 +2,7 @@
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
-import AnimatedPageWrapper from '../components/animated_components/AnimatedPageWrapper';
+import AnimatedPageWrapper from '../components/AnimatedPageWrapper';
 
 interface Request {
   id: string;
@@ -12,7 +12,7 @@ interface Request {
   status: 'pending' | 'completed';
 }
 
-const MapComponent = dynamic(() => import('../components/animated_components/RequestMap'), {
+const MapComponent = dynamic(() => import('../components/RequestMap'), {
   ssr: false,
 });
 

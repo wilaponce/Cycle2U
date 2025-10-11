@@ -1,5 +1,6 @@
 
 import Navbar from './navbar';
+import 'leaflet/dist/leaflet.css';
 
 interface LayoutProps {
   children: React.ReactNode;
