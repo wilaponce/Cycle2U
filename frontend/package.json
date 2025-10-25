@@ -2,7 +2,7 @@
   "name": "cycle2u-frontend",
   "version": "1.0.0",
   "scripts": {
-    "dev": "NODE_OPTIONS='--inspect' next dev",
+    "dev": "next dev",
     "build": "rm -rf .next && next build",
     "start": "next start"
   },
@@ -12,7 +12,7 @@
     "@types/node": "^18.17.0",
     "@types/react": "^18.2.0",
     "axios": "^1.12.2",
-    "firebase": "^12.4.0",
+    "firebase": "^9.23.0",
     "framer-motion": "^12.23.22",
     "leaflet": "^1.9.4",
     "next": "^15.5.4",

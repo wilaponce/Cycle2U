@@ -8,4 +8,4 @@ export const assignRole = (userId: string, role: Role) => apiService.post(`/admi
 export const createDriver = (driverData: Omit<Driver, 'id'>) => apiService.post<Driver>('/admin/drivers', driverData);
 export const updateDriverAvailability = (driverId: string, isAvailable: boolean) => apiService.put(`/admin/drivers/${driverId}/availability`, { isAvailable });
 export const assignDriverToRequest = (requestId: string, driverId: string) => apiService.put(`/admin/requests/${requestId}/assign-driver`, { driverId });
-export const deleteRequest = (requestId: string) => apiService.delete(`/admin/requests/${requestId}`);
+export const deleteRequest = (requestId: string) => apiService.delete(`/admin/NEXT_RENDER_BACKEND_URL/${requestId}`);

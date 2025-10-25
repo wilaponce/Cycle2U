@@ -11,16 +11,10 @@ builder.Services.AddControllersWithViews();
 // Add DbContext
 if (builder.Environment.IsDevelopment())
 {
-    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+    builder.Configuration.GetConnectionString("DefaultConnection");
     builder.Services.AddDbContext<ApplicationDbContext>(options =>
-        options.UseSqlite(connectionString));
+        options.UseSqlite("DefaultConnection"));
 }
-else
-{
-    builder.Services.AddDbContext<ApplicationDbContext>(options =>
-        options.UseInMemoryDatabase("InMemoryDb"));
-}
-
 
 var app = builder.Build();
 
@@ -29,8 +23,17 @@ using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<ApplicationDbContext>();
+    
+    try
+{
     context.Database.Migrate();
 }
+catch (Exception ex)
+{
+    Console.WriteLine($"Migration error: {ex.Message}");
+}
+}
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

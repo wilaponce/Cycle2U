@@ -1,6 +1,12 @@
 
-import Navbar from './navbar';
+
 import 'leaflet/dist/leaflet.css';
+import dynamic from 'next/dynamic';
+
+const Navbar = dynamic(() => import('./navbar'), {
+  ssr: false, // optional: disables server-side rendering
+  loading: () => <div>Loading Navbar...</div>,
+});
 
 interface LayoutProps {
   children: React.ReactNode;

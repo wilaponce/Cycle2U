@@ -17,10 +17,10 @@ const MapComponent = dynamic(() => import('../components/RequestMap'), {
 });
 
 export default function Home() {
-  const [requests, setRequests] = useState<Request[]>([]);
+  const [request, setRequests] = useState<Request[]>([]);
 
   useEffect(() => {
-    fetch('/api/requests')
+    fetch('/api/request')
       .then((res) => res.json())
       .then((data) => setRequests(data))
       .catch((err) => console.error('Error fetching requests:', err));
@@ -38,7 +38,7 @@ export default function Home() {
             <p>Empowering communities through smart recycling and gig-driven pickups.</p>
           </section>
           <section>
-          <MapComponent requests={requests} />
+          <MapComponent requests={request} />
           </section>
         </main>
       </AnimatedPageWrapper>
