@@ -1,4 +1,15 @@
-import Navbar from '@/components/Navbar';
-import { signInWithGoogle, signInWithFacebook } from '@/utils/supabase/server';
-export default function Login() {
-  return (<div className='min-h-screen bg-gray-50'><Navbar /><div className='max-w-md mx-auto mt-10 bg-white p-6 rounded shadow'><h2 className='text-3xl font-bold mb-4'>Login</h2><div className='space-y-4'><button onClick={signInWithGoogle} className='btn-primary w-full'>Login with Google</button><button onClick={signInWithFacebook} className='btn-secondary w-full'>Login with Facebook</button></div></div></div>);}
+'use client';
+import React, { useState } from 'react';
+import { supabase } from '../../lib/supabaseClient';
+
+export default function LoginPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async () => {
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) alert(error.message); else window.location.href = '/dashboard';
+  };
+
+  return (<div className='p-6'><h1 className='text-xl mb-4'>Login</h1><input value={email} onChange={e=>setEmail(e.target.value)} placeholder='Email' className='border p-2'/><input type='password' value={password} onChange={e=>setPassword(e.target.value)} placeholder='Password' className='border p-2'/><button onClick={handleLogin} className='bg-green-500 text-white p-2'>Login</button></div>);
+}

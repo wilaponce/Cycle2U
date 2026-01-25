@@ -1,1 +1,1 @@
-// Placeholder for components/Navbar.tsx
+export default function Navbar() { return (<nav className='bg-green-500 p-4 text-white'>Cycle2u Navbar</nav>); }
