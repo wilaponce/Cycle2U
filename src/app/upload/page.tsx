@@ -1,9 +1,9 @@
 'use client';
 import React, { useState } from 'react';
-import { supabase } from '../../lib/supabaseClient';
+import { supabase } from '@utilities/supabaseClient';
 
 export default function UploadPage() {
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<File | null>(null);
 
   const handleUpload = async () => {
     if (!file) return;
@@ -13,5 +13,5 @@ export default function UploadPage() {
     if (error) alert(error.message); else alert('File uploaded successfully');
   };
 
-  return (<div className='p-6'><h1 className='text-xl mb-4'>Upload Document</h1><input type='file' onChange={e=>setFile(e.target.files[0])}/><button onClick={handleUpload} className='bg-green-500 text-white p-2'>Upload</button></div>);
+  return (<div className='p-6'><h1 className='text-xl mb-4'>Upload Document</h1><input type='file' onChange={e=>setFile(e.target.files?.[0] || null)}/><button onClick={handleUpload} className='bg-green-500 text-white p-2'>Upload</button></div>);
 }

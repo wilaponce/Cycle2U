@@ -1,7 +1,7 @@
 
 'use client';
 import { useState, useEffect } from 'react';
-import { supabase } from '@/utilities/supabaseClient';
+import { supabase } from '@utilities/supabaseClient';
 
 export default function BagDrop() {
   const [address, setAddress] = useState('');

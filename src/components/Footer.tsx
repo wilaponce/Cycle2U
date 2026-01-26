@@ -4,9 +4,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
         <p>&copy; {new Date().getFullYear()} Cycle2u. All rights reserved.</p>
         <div className="flex space-x-4 mt-4 md:mt-0">
-          /privacyPrivacy Policy</a>
-          /termsTerms of Service</a>
-          /contactContact</a>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+          <a href="/contact">Contact</a>
         </div>
       </div>
     </footer>
