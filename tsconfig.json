@@ -19,7 +19,7 @@
     "jsx": "react-jsx",
     "incremental": true,
     // ✅ Absolute imports setup
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
       "@components/*": [
         "components/*"
