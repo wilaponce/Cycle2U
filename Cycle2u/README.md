@@ -58,39 +58,49 @@ This grant significantly boosts credibility and funding potential. The app is ne
 ---
 
 ## ✅ Folder Structure
-app/
-  ├── api/
-  │   ├── bag-drop/
-  │   │   └── route.ts
-  │   ├── request-map/
-  │   │   └── route.ts
-  │   └── rewards/
-  │       └── route.ts
-  ├── dashboard/page.tsx
-  ├── driver/page.tsx
-  ├── login/page.tsx
-  ├── pickup/page.tsx
-  ├── register/page.tsx
-  ├── upload/page.tsx
-  ├── layout.tsx
-  └── page.tsx
-Components/
-  ├── Navbar.tsx
-  ├── Footer.tsx
-  ├── Loader.tsx
-  ├── BagDrop.tsx
-  ├── RequestMap.tsx
-  └── Rewards.tsx
-utilities/
-  ├── supabaseClient.ts
-  └── validation.ts
-styles/
-  ├── globals.css
-  └── site.css
-public/
-  └── images/logo.png
-.env.example
-tailwind.config.js
-postcss.config.js
-Dockerfile
-package.json
+```
+├── .gitattributes
+├── .gitignore
+└── Cycle2u/
+    ├── .env.example
+    ├── Components/
+    │   ├── BagDrop.tsx
+    │   ├── Footer.tsx
+    │   ├── Loader.tsx
+    │   ├── Navbar.tsx
+    │   ├── RequestMap.tsx
+    │   └── Rewards.tsx
+    ├── Dockerfile
+    ├── README.md
+    ├── app/
+    │   ├── api/
+    │   │   ├── bag-drop/
+    │   │   │   └── route.ts
+    │   │   ├── request-map/
+    │   │   │   └── route.ts
+    │   │   └── rewards/
+    │   │       └── route.ts
+    │   ├── dashboard/
+    │   │   └── page.tsx
+    │   ├── driver/
+    │   │   └── page.tsx
+    │   ├── layout.tsx
+    │   ├── login/
+    │   │   └── page.tsx
+    │   ├── page.tsx
+    │   ├── pickup/
+    │   │   └── page.tsx
+    │   ├── register/
+    │   │   └── page.tsx
+    │   └── upload/
+    │       └── page.tsx
+    ├── package.json
+    ├── postcss.config.js
+    ├── styles/
+    │   ├── globals.css
+    │   └── site.css
+    ├── tailwind.config.js
+    └── utilities/
+        ├── supabaseClient.ts
+        └── validation.ts
+```
