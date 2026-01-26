@@ -1,10 +1,61 @@
-# Cycle2u Complete Next.js App Router Project
-Includes:
-- App Router structure
-- Supabase integration (server-side client)
-- OAuth login (Google, Facebook)
-- Tailwind CSS styling
-- CRUD API routes
-- ntfy.sh notifications
-- Payment placeholders
-- Dockerfile and deployment instructions
+
+# Cycle2u – Recycling Made Simple
+
+Cycle2u is a tech-driven recycling platform designed to make recycling accessible, rewarding, and efficient for everyone, including individuals without a permanent address. Our mission: **reduce waste, promote sustainability, and empower communities through technology and incentives.**
+
+---
+
+## ✅ Grant Opportunity
+Cycle2u is preparing to apply for the **CalRecycle Beverage Container Redemption Innovation Grant (RIG)**, offering **$500K–$10M** for projects that:
+- Expand **container redemption access** in underserved areas.
+- Implement **mobile collection programs** and **bag-drop systems**.
+- Use **technology-driven solutions** to improve recycling efficiency.
+
+**Why Cycle2u qualifies:**
+- **Mobile Unit Program**: Gig-economy driver model for home pickups.
+- **Bag Drop Feature**: Fully implemented with real-time updates.
+- **Social Impact**: Targets underserved and homeless populations.
+- **Scalability**: Modern tech stack ensures rapid expansion.
+
+This grant significantly boosts credibility and funding potential. The app is nearly production-ready.
+
+---
+
+## ✅ Current Features
+- **Next.js App Router + React Frontend**
+- **Supabase Backend & Authentication**
+- **Gig-Economy Driver Model**
+- **Rewards System** (Cash App, PayPal)
+- **Bag Drop Feature** (real-time updates + Tailwind UI)
+- **Deployment**: Vercel (frontend)
+
+---
+
+## ✅ New Features Added
+- **Request Map**: Users can request recycling services by location.
+- **Rewards Dashboard**: Displays available rewards and points.
+- **Real-time Updates**: Bag Drop requests auto-refresh via Supabase subscriptions.
+- **Tailwind Styling**: Clean, responsive UI.
+
+---
+
+## ✅ Planned Features
+- Expanded rewards program (raffles, contests).
+- Savings & investment options.
+- Advanced AI recycling validation.
+- Community housing initiative.
+- Gamification & leaderboards.
+
+---
+
+## ✅ Technology Stack
+- **Frontend**: Next.js (App Router) + React
+- **Backend & Auth**: Supabase
+- **Styling**: Tailwind CSS
+- **Payments**: Cash App, PayPal
+- **Deployment**: Vercel
+
+---
+
+## ✅ Folder Structure
+app/ ├── api/ │     ├── bag-drop/ │     │     └── route.ts │     ├── request-map/ │     │     └── route.ts │     └── rewards/ │           └── route.ts ├── dashboard/page.tsx ├── driver/page.tsx ├── login/page.tsx ├── pickup/page.tsx ├── register/page.tsx ├── upload/page.tsx ├── layout.tsx └── page.tsx Components/ ├── BagDrop.tsx ├── RequestMap.tsx ├── Rewards.tsx ├── Navbar.tsx ├── Footer.tsx └── Loader.tsx utilities/ ├── supabaseClient.ts └── validation.ts styles/ ├── globals.css └── site.css public/ └── images/logo.png .env.example tailwind.config.js postcss.config.js Dockerfile package.json
