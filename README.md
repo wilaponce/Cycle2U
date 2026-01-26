@@ -1,6 +1,9 @@
 
 # Cycle2u – Recycling Made Simple
 
+Join me to make it possible
+github: wilaponce 
+
 Cycle2u is a tech-driven recycling platform designed to make recycling accessible, rewarding, and efficient for everyone, including individuals without a permanent address. Our mission: **reduce waste, promote sustainability, and empower communities through technology and incentives.**
 
 ---
