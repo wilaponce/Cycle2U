@@ -58,4 +58,3 @@ This grant significantly boosts credibility and funding potential. The app is ne
 ---
 
 ## ✅ Folder Structure
-app/ ├── api/ │     ├── bag-drop/ │     │     └── route.ts │     ├── request-map/ │     │     └── route.ts │     └── rewards/ │           └── route.ts ├── dashboard/page.tsx ├── driver/page.tsx ├── login/page.tsx ├── pickup/page.tsx ├── register/page.tsx ├── upload/page.tsx ├── layout.tsx └── page.tsx Components/ ├── BagDrop.tsx ├── RequestMap.tsx ├── Rewards.tsx ├── Navbar.tsx ├── Footer.tsx └── Loader.tsx utilities/ ├── supabaseClient.ts └── validation.ts styles/ ├── globals.css └── site.css public/ └── images/logo.png .env.example tailwind.config.js postcss.config.js Dockerfile package.json
