@@ -1,11 +1,29 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { supabase } from '../../utilities/supabaseClient';
+import { supabase } from '@/utilities/supabaseClient';
+
+interface Pickup {
+  id: string;
+  status: string;
+  date: string;
+}
+
+interface Transaction {
+  id: string;
+  amount: number;
+  status: string;
+}
+
+interface History {
+  id: string;
+  action: string;
+  date: string;
+}
 
 export default function DashboardPage() {
-  const [pickups, setPickups] = useState([]);
-  const [transactions, setTransactions] = useState([]);
-  const [history, setHistory] = useState([]);
+  const [pickups, setPickups] = useState<Pickup[]>([]);
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [history, setHistory] = useState<History[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

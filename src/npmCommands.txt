@@ -1,0 +1,29 @@
+NPM Commands for Cycle2U Project
+==================================
+
+INSTALL DEPENDENCIES:
+npm install
+
+DEVELOPMENT:
+npm run dev          - Start development server (http://localhost:3000)
+
+BUILD:
+npm run build        - Build for production
+
+START:
+npm start            - Run production build
+
+KILL PROCESSES:
+lsof -ti :3000 | xargs kill -9           - Kill process on port 3000
+pkill -f "next dev"                      - Kill Next.js dev server
+fuser -k 3000/tcp                        - Alternative way to kill port 3000
+
+LINTING & FORMATTING:
+npm run lint         - Run ESLint (if configured)
+
+HELPFUL UTILITIES:
+npm list             - List installed dependencies
+npm outdated         - Check for outdated packages
+npm audit            - Check for security vulnerabilities
+npm audit fix        - Auto-fix security vulnerabilities
+npm cache clean --force  - Clear npm cache

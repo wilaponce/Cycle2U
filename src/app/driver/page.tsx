@@ -1,9 +1,17 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { supabase } from '@utilities/supabaseClient';
+import { supabase } from '@/utilities/supabaseClient';
+
+interface Assignment {
+  id: string;
+  status: string;
+  date: string;
+  driver_id: string;
+  [key: string]: any;
+}
 
 export default function DriverPage() {
-  const [assignments, setAssignments] = useState([]);
+  const [assignments, setAssignments] = useState<Assignment[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 
 import { NextResponse } from 'next/server';
-import { supabase } from '@utilities/supabaseClient';
+import { supabase } from '@/utilities/supabaseClient';
 
 export async function POST(req: Request) {
   const { address, bag_count } = await req.json();

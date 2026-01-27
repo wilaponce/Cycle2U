@@ -21,23 +21,8 @@
     // ✅ Absolute imports setup
     "baseUrl": ".",
     "paths": {
-      "@components/*": [
-        "components/*"
-      ],
-      "@app/*": [
-        "app/*"
-      ],
-      "@utilities/*": [
-        "utilities/*"
-      ],
-      "@hooks/*": [
-        "hooks/*"
-      ],
-      "@styles/*": [
-        "styles/*"
-      ],
-      "@context/*": [
-        "context/*"
+      "@/*": [
+        "src/*"
       ]
     },
     "plugins": [
