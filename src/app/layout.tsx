@@ -1,6 +1,7 @@
 import '@/styles/globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata = {
   title: 'Cycle2u',
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer className="w-full">
           <Footer />
         </footer>
+        <Analytics />
       </body>
     </html>
   );
