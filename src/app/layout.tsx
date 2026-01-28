@@ -1,31 +1,22 @@
+
 import '@/styles/globals.css';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import { Analytics } from "@vercel/analytics/next"
+import Sidebar from '@/components/layout/Sidebar';
+import MobileDrawer from '@/components/layout/MobileDrawer';
 
 export const metadata = {
-  title: 'Cycle2u',
-  description: 'Recycling Made Simple',
+  title: 'Cycle2U',
+  description: 'Recycling made easy for everyone.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="flex flex-col min-h-screen bg-gray-50 text-gray-900">
-        {/* Navbar fixed at top */}
-        <header className="fixed top-0 left-0 w-full z-50">
-          <Navbar />
-        </header>
-
-        {/* Main content with padding for Navbar */}
-        <main className="flex-1 pt-16 pb-16 px-4 sm:px-6 lg:px-8">
-          {children}
-        </main>
-
-        {/* Footer fixed at bottom */}
-        <footer className="w-full">
-          <Footer />
-        </footer>
+    <html lang='en'>
+      <body className='bg-gray-50 text-gray-900'>
+        <div className='flex min-h-screen'>
+          <Sidebar />
+          <MobileDrawer />
+          <main className='flex-1 p-4 md:p-6'>{children}</main>
+        </div>
       </body>
     </html>
   );
